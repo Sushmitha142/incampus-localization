@@ -658,7 +658,6 @@ const cBlockFirstRooms = [
     { id: "student_lounge_1", name: "Student Lounge", x: 760, y: 155, w: 45, h: 60, path: [[320, 150], [320, 130], [785, 130], [785, 150]] },
 
     // Bottom Store Rooms
-    { id: "electrical_store", name: "1, 2 & 3 ELECTRICAL STORE ROOMS", x: 300, y: 650, w: 400, h: 30, path: [[50, 50], [500, 650]] },
 ];
 
 // --- 2ND FLOOR LAYOUT - DEPARTMENT OF ISE (Based on image_faa0e7.png) ---
@@ -1054,6 +1053,11 @@ function App() {
     const [indoorRoute, setIndoorRoute] = useState(null);
     const [block, setBlock] = useState("dblock");
     const [isOpen, setIsOpen] = useState(false);
+    // New hook to calculate scale factor
+    // Inside function App() { ... }
+
+    // ... (existing state declarations) ...
+
 
 
 
@@ -1554,7 +1558,7 @@ function App() {
     }
 
     return (
-        <div className="app-container">
+        <div className="app-container" >
             <h1 className="app-title" style={{ fontSize: "30px", color: "#000000ff" }}>CAMPUS NAVIGATOR</h1>
 
             {!indoorMode && (
@@ -2044,28 +2048,23 @@ function App() {
                     <div
                         style={{
                             position: "relative",
-                            width: "95%",
-                            maxWidth: "900px", // ✅ gives room on desktop but fits phone screens
+                            width: "820px",
+                            height: "420px",
                             margin: "24px auto",
                             border: "1.5px solid #1a237e",
-                            borderRadius: "22px",
                             background: `
-      linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%),
-      repeating-linear-gradient(90deg, #e3eafc 0 39px, #c3cfe2 40px 40px),
-      repeating-linear-gradient(180deg, #e3eafc 0 39px, #c3cfe2 40px 40px)
-    `,
+                linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%),
+                repeating-linear-gradient(90deg, #e3eafc 0 39px, #c3cfe2 40px 40px),
+                repeating-linear-gradient(180deg, #e3eafc 0 39px, #c3cfe2 40px 40px)
+              `,
                             boxShadow: "0 12px 36px 0 rgba(30, 42, 90, 0.18)",
+                            borderRadius: "22px",
+                            overflow: "hidden",
                             transition: "box-shadow 0.3s, border 0.3s",
-                            overflowX: "auto", // ✅ allows horizontal scroll if needed
-                            overflowY: "auto",
-                            minHeight: "420px", // ✅ vertical scroll on smaller screens
-                            height: "auto", // ✅ auto height for responsiveness
-                            padding: "1rem", // ✅ inner spacing for smaller screens
+                            // ... (Indoor map container styles remain the same) ...
                         }}
                     >
 
-
-                        {/* All your map content (Floor Title, Entrance Marker, and Rooms) go here */}
 
                         {/* Floor Title - UPDATED TO USE 'block' STATE */}
                         <div style={{
@@ -2256,6 +2255,7 @@ function App() {
                                 background: "#1976d2",
                                 color: "#fff",
                                 border: "none",
+
                                 borderRadius: "8px",
                                 fontWeight: "bold",
                                 cursor: "pointer",
@@ -2267,8 +2267,6 @@ function App() {
                             Back to Outdoor Map
                         </button>
                     </div>
-
-
 
 
 
