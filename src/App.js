@@ -1810,18 +1810,14 @@ function App() {
           {/* BLOCK SELECTION BUTTONS: NEW */}
           <div style={{
             marginBottom: "10px",
-            display: "flex",
-            flexWrap: "wrap", // Use inline-flex to wrap content tightly
-            justifyContent: "center", // ✅ center all buttons
-            alignItems: "center",
-            padding: "10px",
-            border: "2px solid #395168ff",
-            borderRadius: "50px",
-            gap: "10px",
-            backgroundColor: "#f0f8ff",
+            display: "inline-flex", // Use inline-flex to wrap content tightly
+            padding: "10px",        // Add padding inside the border box
+            border: "2px solid #395168ff", // Blue border for highlighting
+            borderRadius: "50px",   // Curved corners for the box
+            gap: "10px",            // Space between buttons (optional, but cleaner than marginRight)
+            backgroundColor: "#f0f8ff", // Light background color for contrast (optional)
             boxShadow: "0px 4px 12px rgba(25, 118, 210, 0.2)",
-            maxWidth: "100%", // ✅ prevent overflow
-            overflowX: "auto",
+            alignment: "center",
           }}>
             <span
               style={{
@@ -2384,16 +2380,6 @@ function App() {
             border: 1px solid #ccc;
             background: #0b0b0b;
             color: #fff;
-          }
-
-          @media (max-width: 768px) {
-            .map-container {
-              width: 100% !important;
-              max-width: 100% !important;
-              height: auto !important;
-              padding: 0.8rem !important;
-              overflow-x: auto !important;
-            }
           }
         `}
           </style>
