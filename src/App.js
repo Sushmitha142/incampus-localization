@@ -1051,8 +1051,8 @@ function App() {
   const [fromResult, setFromResult] = useState(null);
   const [indoorMode, setIndoorMode] = useState(false);
   const [floor, setFloor] = useState("ground");
-  const [indoorRoute, setIndoorRoute] = useState([]);
-  const [pendingClassroom, setPendingClassroom] = useState([]);
+  const [indoorRoute, setIndoorRoute] = useState(null);
+  const [pendingClassroom, setPendingClassroom] = useState(null);
   const [block, setBlock] = useState("dblock");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -1107,32 +1107,7 @@ function App() {
     }
   };
 
-  const handleSelectResult = (item) => {
-    setShowSuggestions(false);
-    setRouteCoordinates(null);
-    setIndoorRoute(null);
 
-    if (item.type === "indoor-room") {
-      // Determine the building for the selected room (D Block or C Block)
-      const buildingId = item.floor.startsWith('cblock') ? 'C BLOCK' : 'D BLOCK';
-      const building = buildings.find((b) => b.name === buildingId);
-
-      setSelectedResult(building); // Set target to the building's outdoor location
-      setPendingClassroom(item); // Keep the specific room info
-      if (location) fetchRoute([location.latitude, location.longitude], [building.lat, building.lng]);
-      setIndoorMode(false);
-      return;
-    }
-
-    if (item.id === "9" || item.id === "dblock") {
-      setSelectedResult(item);
-      if (location) fetchRoute([location.latitude, location.longitude], [item.lat, item.lng]);
-      return;
-    }
-
-    setSelectedResult(item);
-    setIndoorMode(false);
-  };
   const handleNavigate = () => {
     if (!fromResult || !selectedResult) return;
 
