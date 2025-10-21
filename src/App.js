@@ -658,7 +658,6 @@ const cBlockFirstRooms = [
   { id: "student_lounge_1", name: "Student Lounge", x: 760, y: 155, w: 45, h: 60, path: [[320, 150], [320, 130], [785, 130], [785, 150]] },
 
   // Bottom Store Rooms
-  { id: "electrical_store", name: "1, 2 & 3 ELECTRICAL STORE ROOMS", x: 300, y: 650, w: 400, h: 30, path: [[50, 50], [500, 650]] },
 ];
 
 // --- 2ND FLOOR LAYOUT - DEPARTMENT OF ISE (Based on image_faa0e7.png) ---
@@ -1054,6 +1053,12 @@ function App() {
   const [indoorRoute, setIndoorRoute] = useState(null);
   const [block, setBlock] = useState("dblock");
   const [isOpen, setIsOpen] = useState(false);
+  // New hook to calculate scale factor
+  // Inside function App() { ... }
+
+  // ... (existing state declarations) ...
+
+
 
 
   // Inside the App function, after all your 'useState' declarations:
@@ -1553,7 +1558,7 @@ function App() {
   }
 
   return (
-    <div className="app-container">
+    <div className="app-container" style={{ paddingLeft: '10px', paddingRight: '10px' }}>
       <h1 className="app-title" style={{ fontSize: "30px", color: "#000000ff" }}>CAMPUS NAVIGATOR</h1>
 
       {!indoorMode && (
@@ -2043,231 +2048,244 @@ function App() {
           <div
             style={{
               position: "relative",
-              width: "95%",
-              maxWidth: "900px", // ✅ gives room on desktop but fits phone screens
+              width: "100%",
+              maxWidth: "820px", // ✅ gives room on desktop but fits phone screens
               margin: "24px auto",
+              height: `auto`, // Dynamic height based on scaling
+              minHeight: "420px",
+              overflow: "visible",
               border: "1.5px solid #1a237e",
+              padding: "1rem",
               borderRadius: "22px",
               background: `
-                  linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%),
-                  repeating-linear-gradient(90deg, #e3eafc 0 39px, #c3cfe2 40px 40px),
-                  repeating-linear-gradient(180deg, #e3eafc 0 39px, #c3cfe2 40px 40px)
-                `,
+      linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%),
+      repeating-linear-gradient(90deg, #e3eafc 0 39px, #c3cfe2 40px 40px),
+      repeating-linear-gradient(180deg, #e3eafc 0 39px, #c3cfe2 40px 40px)
+    `,
               boxShadow: "0 12px 36px 0 rgba(30, 42, 90, 0.18)",
               transition: "box-shadow 0.3s, border 0.3s",
-              overflowX: "auto", // ✅ allows horizontal scroll if needed
-              overflowY: "hidden",
-              minHeight: "420px", // ✅ vertical scroll on smaller screens
-              height: "auto", // ✅ auto height for responsiveness
-              padding: "1rem", // ✅ inner spacing for smaller screens
             }}
           >
 
-            {/* All your map content (Floor Title, Entrance Marker, and Rooms) go here */}
+            <div
+              style={{
+                position: 'relative',
+                width: '100vw', // Maintain the fixed width for positioning
+                height: `420px`,
 
-            {/* Floor Title - UPDATED TO USE 'block' STATE */}
-            <div style={{
-              position: "absolute",
-              top: 10,
-              left: 20,
-              fontWeight: 700,
-              fontSize: 18,
-              color: "#003467ff",
-              letterSpacing: 1,
-              zIndex: 10,
-              textShadow: "0 1px 4px #fff"
-              // ... (Title styles remain the same) ...
-            }}>
-              {block === "canteen" ? (<>
-                {/* Display Canteen and the selected floor */}
-                {"Canteen - "}
-                {floor === "ground" ? " Ground Floor" : floor === "first" ? " First Floor" : floor === "second" ? " Second Floor" : floor === "third" ? " Third Floor" : floor === "fourth" ? " Fourth Floor" : " Fifth Floor"}
-              </>) : (
-                <>
-                  {block[0].toUpperCase()} Block -
+                // 🚀 DYNAMIC SCALING FIX APPLIED HERE 🚀
+                transform: 'scale(calc((100vw - 40px) / 820))',
+                transformOrigin: 'top left',
+                left: "0%",// Scale from the top-left corner
+
+                // When scaled down, the element's actual dimensions are 820px, 
+                // so we need to compensate for the whitespace it creates:
+
+              }}
+            >
+
+              {/* Floor Title - UPDATED TO USE 'block' STATE */}
+              <div style={{
+                position: "absolute",
+                top: 10,
+                left: 20,
+                fontWeight: 700,
+                fontSize: 18,
+                color: "#003467ff",
+                letterSpacing: 1,
+                zIndex: 10,
+                textShadow: "0 1px 4px #fff"
+                // ... (Title styles remain the same) ...
+              }}>
+                {block === "canteen" ? (<>
+                  {/* Display Canteen and the selected floor */}
+                  {"Canteen - "}
                   {floor === "ground" ? " Ground Floor" : floor === "first" ? " First Floor" : floor === "second" ? " Second Floor" : floor === "third" ? " Third Floor" : floor === "fourth" ? " Fourth Floor" : " Fifth Floor"}
-                </>
-              )}
-            </div>
-
-
-
-            {/* ENTRANCE MARKER - UPDATED LOGIC */}
-            {/* D Block Entrance Marker */}
-            {block === "dblock" && floor === "ground" && (
-              <div
-                style={{
-                  position: "absolute",
-                  left: dBlockEntrance.x,
-                  top: dBlockEntrance.y,
-                  background: "#1c957fff",
-                  color: "#000000ff",
-                  padding: "4px 10px",
-                  borderRadius: "8px",
-                  fontSize: "13px",
-                  fontWeight: "bold",
-                  boxShadow: "0 2px 8px #bbb",
-                  border: "2px solid #0d2a25ff",
-                  transform: "translate(-50%,-50%)",
-                  zIndex: 5,
-                }}
-              >
-                Entrance
+                </>) : (
+                  <>
+                    {block[0].toUpperCase()} Block -
+                    {floor === "ground" ? " Ground Floor" : floor === "first" ? " First Floor" : floor === "second" ? " Second Floor" : floor === "third" ? " Third Floor" : floor === "fourth" ? " Fourth Floor" : " Fifth Floor"}
+                  </>
+                )}
               </div>
-            )}
-            {/* C Block Entrance Marker */}
-            {block === "cblock" && floor === "ground" && (
-              <div
-                style={{
-                  position: "absolute",
-                  left: cBlockEntrance.x,
-                  top: cBlockEntrance.y,
-                  background: "#4caf50",
-                  color: "#fff",
-                  padding: "4px 10px",
-                  borderRadius: "8px",
-                  fontSize: "13px",
-                  fontWeight: "bold",
-                  boxShadow: "0 2px 8px #bbb",
-                  border: "2px solid #388e3c",
-                  transform: "translate(-50%,-50%)",
-                  zIndex: 5,
-                }}
-              >
-                Entrance
-              </div>
-            )}
 
-            {/* ROOM RENDERING LOGIC REMAINS THE SAME, using the now-correct 'activeRooms' array */}
-            {activeRooms.map((room) => {
-              let bg = "#90caf9", border = "#1976d2", icon = "";
-              if (room.name.toLowerCase().includes("washroom")) {
-                bg = "#a5d6a7"; border = "#388e3c"; icon = "🚻";
-              } else if (room.name.toLowerCase().includes("🚻")) {
-                bg = "#a5d6a7"; border = "#388e3c"; icon = "";
-              }
-              else if (room.name.toLowerCase().includes("stairs")) {
-                bg = "#737373ff"; border = "#3f3f3fff"; icon = "🦿";
-              } else if (room.name.toLowerCase().includes("staff")) {
-                bg = "#ffe082"; border = "#fbc02d"; icon = "👩‍🏫";
-              } else if (room.name.toLowerCase().includes("meeting")) {
-                bg = "#c18c5aff"; border = "#a46b42d0"; icon = "👥";
-              } else if (room.name.toLowerCase().includes("av hall")) {
-                bg = "#c18c5aff"; border = "#a46b42d0"; icon = "🎤";
-                // ... (Room rendering logic remains the same) ...
-              }
-              else if (room.name.toLowerCase().includes("l-")) {
-                bg = "#e4d4d4ff"; border = "#cc5a5aff"; icon = "";
-              }
-              if (indoorRoute && indoorRoute.id === room.id) { bg = "#9a80a9ff";; border = "#ffffffff" }
-              return (
+
+
+              {/* ENTRANCE MARKER - UPDATED LOGIC */}
+              {/* D Block Entrance Marker */}
+              {block === "dblock" && floor === "ground" && (
                 <div
-                  key={room.id}
-                  title={room.name}
                   style={{
                     position: "absolute",
-                    left: room.x,
-                    top: room.y,
-                    width: room.w,
-                    height: room.h,
-                    border: `2.5px solid ${border}`,
-                    background: `linear-gradient(135deg, ${bg} 60%, #fffde4 100%)`,
-                    borderRadius: "16px",
-                    boxShadow: "0 6px 24px 0 rgba(33,50,243,0.10), 0 1.5px 6px 0 #b0b8d1",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "11px",
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    transition: "background 0.2s, box-shadow 0.2s, border 0.2s",
-                    textAlign: "center",
-                    zIndex: 2,
-                    outline: indoorRoute && indoorRoute.id === room.id ? "3px solid #4b6669ff" : "none",
-                    letterSpacing: 0.5,
-                    color: "#1a237e",
-                    textShadow: "0 1px 4px #fff, 0 0.5px 1px #b0b8d1"
-                  }}
-                  onClick={() => setIndoorRoute(room)}
-                  onMouseOver={e => {
-                    e.currentTarget.style.boxShadow = "0 12px 32px 0 rgba(33,50,243,0.18), 0 2px 8px 0 #b0b8d1";
-                    e.currentTarget.style.border = `2.5px solid #3949ab`;
-                  }}
-                  onMouseOut={e => {
-                    e.currentTarget.style.boxShadow = "0 6px 24px 0 rgba(33,50,243,0.10), 0 1.5px 6px 0 #b0b8d1";
-                    e.currentTarget.style.border = `2.5px solid ${border}`;
+                    left: dBlockEntrance.x,
+                    top: dBlockEntrance.y,
+                    background: "#1c957fff",
+                    color: "#000000ff",
+                    padding: "4px 10px",
+                    borderRadius: "8px",
+                    fontSize: "13px",
+                    fontWeight: "bold",
+                    boxShadow: "0 2px 8px #bbb",
+                    border: "2px solid #0d2a25ff",
+                    transform: "translate(-50%,-50%)",
+                    zIndex: 5,
                   }}
                 >
-                  {icon && <span style={{ fontSize: room.w > 60 ? 32 : 22, marginBottom: 2 }}>{icon}</span>}
-                  <span>{room.name}</span>
+                  Entrance
                 </div>
-              );
-            })}
+              )}
+              {/* C Block Entrance Marker */}
+              {block === "cblock" && floor === "ground" && (
+                <div
+                  style={{
+                    position: "absolute",
+                    left: cBlockEntrance.x,
+                    top: cBlockEntrance.y,
+                    background: "#4caf50",
+                    color: "#fff",
+                    padding: "4px 10px",
+                    borderRadius: "8px",
+                    fontSize: "13px",
+                    fontWeight: "bold",
+                    boxShadow: "0 2px 8px #bbb",
+                    border: "2px solid #388e3c",
+                    transform: "translate(-50%,-50%)",
+                    zIndex: 5,
+                  }}
+                >
+                  Entrance
+                </div>
+              )}
 
-            {indoorRoute && (
-              <svg
+              {/* ROOM RENDERING LOGIC REMAINS THE SAME, using the now-correct 'activeRooms' array */}
+              {activeRooms.map((room) => {
+                let bg = "#90caf9", border = "#1976d2", icon = "";
+                if (room.name.toLowerCase().includes("washroom")) {
+                  bg = "#a5d6a7"; border = "#388e3c"; icon = "🚻";
+                } else if (room.name.toLowerCase().includes("🚻")) {
+                  bg = "#a5d6a7"; border = "#388e3c"; icon = "";
+                }
+                else if (room.name.toLowerCase().includes("stairs")) {
+                  bg = "#737373ff"; border = "#3f3f3fff"; icon = "🦿";
+                } else if (room.name.toLowerCase().includes("staff")) {
+                  bg = "#ffe082"; border = "#fbc02d"; icon = "👩‍🏫";
+                } else if (room.name.toLowerCase().includes("meeting")) {
+                  bg = "#c18c5aff"; border = "#a46b42d0"; icon = "👥";
+                } else if (room.name.toLowerCase().includes("av hall")) {
+                  bg = "#c18c5aff"; border = "#a46b42d0"; icon = "🎤";
+                  // ... (Room rendering logic remains the same) ...
+                }
+                else if (room.name.toLowerCase().includes("l-")) {
+                  bg = "#e4d4d4ff"; border = "#cc5a5aff"; icon = "";
+                }
+                if (indoorRoute && indoorRoute.id === room.id) { bg = "#9a80a9ff";; border = "#ffffffff" }
+                return (
+                  <div
+                    key={room.id}
+                    title={room.name}
+                    style={{
+                      position: "absolute",
+                      left: room.x,
+                      top: room.y,
+                      width: room.w,
+                      height: room.h,
+                      border: `2.5px solid ${border}`,
+                      background: `linear-gradient(135deg, ${bg} 60%, #fffde4 100%)`,
+                      borderRadius: "16px",
+                      boxShadow: "0 6px 24px 0 rgba(33,50,243,0.10), 0 1.5px 6px 0 #b0b8d1",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: "11px",
+                      fontWeight: 700,
+                      cursor: "pointer",
+                      transition: "background 0.2s, box-shadow 0.2s, border 0.2s",
+                      textAlign: "center",
+                      zIndex: 2,
+                      outline: indoorRoute && indoorRoute.id === room.id ? "3px solid #4b6669ff" : "none",
+                      letterSpacing: 0.5,
+                      color: "#1a237e",
+                      textShadow: "0 1px 4px #fff, 0 0.5px 1px #b0b8d1"
+                    }}
+                    onClick={() => setIndoorRoute(room)}
+                    onMouseOver={e => {
+                      e.currentTarget.style.boxShadow = "0 12px 32px 0 rgba(33,50,243,0.18), 0 2px 8px 0 #b0b8d1";
+                      e.currentTarget.style.border = `2.5px solid #3949ab`;
+                    }}
+                    onMouseOut={e => {
+                      e.currentTarget.style.boxShadow = "0 6px 24px 0 rgba(33,50,243,0.10), 0 1.5px 6px 0 #b0b8d1";
+                      e.currentTarget.style.border = `2.5px solid ${border}`;
+                    }}
+                  >
+                    {icon && <span style={{ fontSize: room.w > 60 ? 32 : 22, marginBottom: 2 }}>{icon}</span>}
+                    <span>{room.name}</span>
+                  </div>
+                );
+              })}
+
+              {indoorRoute && (
+                <svg
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    pointerEvents: "none",
+                    zIndex: 10,
+                  }}
+                >
+                  <polyline
+                    points={indoorRoute.path.map(([x, y]) => `${x},${y}`).join(" ")}
+                    fill="none"
+                    stroke="#fff"
+                    strokeWidth="10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <polyline
+                    points={indoorRoute.path.map(([x, y]) => `${x},${y}`).join(" ")}
+                    fill="none"
+                    stroke="#444"
+                    strokeWidth="6"
+                    strokeDasharray="18,10"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              )}
+
+
+
+              {/* BACK BUTTON REMAINS THE SAME */}
+              <button
+                onClick={() => {
+                  setIndoorMode(false);
+                  setIndoorRoute(null);
+                }}
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "100%",
-                  pointerEvents: "none",
+                  position: "absolute",        // ✅ anchors button inside the map box
+                  bottom: "15px",              // ✅ places it near the bottom
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  padding: "10px 20px",
+                  background: "#1976d2",
+                  color: "#fff",
+                  border: "none",
+
+                  borderRadius: "8px",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
+                  transition: "transform 0.2s ease, background 0.2s ease",
                   zIndex: 10,
                 }}
               >
-                <polyline
-                  points={indoorRoute.path.map(([x, y]) => `${x},${y}`).join(" ")}
-                  fill="none"
-                  stroke="#fff"
-                  strokeWidth="10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <polyline
-                  points={indoorRoute.path.map(([x, y]) => `${x},${y}`).join(" ")}
-                  fill="none"
-                  stroke="#444"
-                  strokeWidth="6"
-                  strokeDasharray="18,10"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            )}
-
-
-
-            {/* BACK BUTTON REMAINS THE SAME */}
-            <button
-              onClick={() => {
-                setIndoorMode(false);
-                setIndoorRoute(null);
-              }}
-              style={{
-                position: "absolute",        // ✅ anchors button inside the map box
-                bottom: "15px",              // ✅ places it near the bottom
-                left: "50%",
-                transform: "translateX(-50%)",
-                padding: "10px 20px",
-                background: "#1976d2",
-                color: "#fff",
-                border: "none",
-                borderRadius: "8px",
-                fontWeight: "bold",
-                cursor: "pointer",
-                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
-                transition: "transform 0.2s ease, background 0.2s ease",
-                zIndex: 10,
-              }}
-            >
-              Back to Outdoor Map
-            </button>
+                Back to Outdoor Map
+              </button>
+            </div>
           </div>
-
-
-
 
 
           {/* Floating Chatbot Button + Chat window */}
@@ -2384,6 +2402,16 @@ function App() {
             border: 1px solid #ccc;
             background: #0b0b0b;
             color: #fff;
+          }
+
+          @media (max-width: 768px) {
+            .map-container {
+              width: 100% !important;
+              max-width: 100% !important;
+              height: auto !important;
+              padding: 0.8rem !important;
+              overflow-x: auto !important;
+            }
           }
         `}
           </style>
