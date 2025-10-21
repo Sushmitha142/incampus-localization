@@ -1724,8 +1724,6 @@ function App() {
           >
             Navigate
           </button>
-
-
         </div>
       )}
 
@@ -2040,9 +2038,12 @@ function App() {
           <div
             style={{
               position: "relative",
-              width: "820px",
+              width: "95%",
               height: "420px",
               margin: "24px auto",
+              overflowX: "auto",
+              minWidth: "320px",
+              maxWidth: "820px",
               border: "1.5px solid #1a237e",
               background: `
                 linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%),
@@ -2056,6 +2057,8 @@ function App() {
               // ... (Indoor map container styles remain the same) ...
             }}
           >
+            {/* All your map content (Floor Title, Entrance Marker, and Rooms) go here */}
+
             {/* Floor Title - UPDATED TO USE 'block' STATE */}
             <div style={{
               position: "absolute",
@@ -2228,108 +2231,111 @@ function App() {
               </svg>
             )}
 
-          </div>
 
-          {/* BACK BUTTON REMAINS THE SAME */}
-          <button
-            onClick={() => {
-              setIndoorMode(false);
-              setIndoorRoute(null);
-            }}
-            style={{
-              padding: "10px 20px",
-              background: "#1976d2",
-              color: "#fff",
-              border: "none",
-              borderRadius: "6px",
 
-              // ... (Back button styles remain the same) ...
-            }}
-          >
-            Back to Outdoor Map
-          </button>
-        </div>
-      )}
-
-      {/* Floating Chatbot Button + Chat window */}
-      <div
-        style={{
-          position: "fixed",
-          bottom: "25px",
-          right: "25px",
-          zIndex: 9999,
-        }}
-      >
-        {isOpen && (
-          <div
-            style={{
-              position: "absolute",
-              bottom: "0px",
-              right: "0",
-              width: "300px",
-              backgroundColor: "#0b0b0b",
-              borderRadius: "12px",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-              overflow: "hidden",
-              animation: "slideUp 0.18s ease-in-out",
-            }}
-          >
-            <div
+            {/* BACK BUTTON REMAINS THE SAME */}
+            <button
+              onClick={() => {
+                setIndoorMode(false);
+                setIndoorRoute(null);
+              }}
               style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                backgroundColor: "#003030",
+                padding: "10px 20px",
+                background: "#1976d2",
                 color: "#fff",
-                padding: "10px 12px",
-                fontWeight: "700",
+                border: "none",
+                borderRadius: "6px",
+
+                // ... (Back button styles remain the same) ...
               }}
             >
-              🤖 Campus Chatbot
-              <X
-                size={18}
-                style={{ cursor: "pointer" }}
-                onClick={() => setIsOpen(false)}
-              />
-            </div>
-
-            <div style={{ background: "#0b0b0b", padding: "12px" }}>
-              <Chatbot
-                config={config}
-                messageParser={MessageParser}
-                actionProvider={ActionProvider}
-              />
-            </div>
+              Back to Outdoor Map
+            </button>
           </div>
-        )}
 
-        {/* Floating Button */}
-        <button
-          onClick={() => setIsOpen((prev) => !prev)}
-          style={{
-            backgroundColor: "#1976d2",
-            border: "none",
-            borderRadius: "50%",
-            width: "56px",
-            height: "56px",
-            cursor: "pointer",
-            boxShadow: "0 10px 30px rgba(25,118,210,0.24)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            transition: "transform 0.2s ease",
-          }}
-          aria-label="Toggle chat"
-        >
-          <MessageCircle
-            size={28}
-            color="#f4f3f3ff" />
-        </button>
-      </div>
 
-      {/* Animations & custom styles */}
-      <style>
-        {`
+
+
+
+          {/* Floating Chatbot Button + Chat window */}
+          <div
+            style={{
+              position: "fixed",
+              bottom: "25px",
+              right: "25px",
+              zIndex: 9999,
+            }}
+          >
+            {isOpen && (
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "0px",
+                  right: "0",
+                  width: "300px",
+                  backgroundColor: "#0b0b0b",
+                  borderRadius: "12px",
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+                  overflow: "hidden",
+                  animation: "slideUp 0.18s ease-in-out",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    backgroundColor: "#003030",
+                    color: "#fff",
+                    padding: "10px 12px",
+                    fontWeight: "700",
+                  }}
+                >
+                  🤖 Campus Chatbot
+                  <X
+                    size={18}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setIsOpen(false)}
+                  />
+                </div>
+
+                <div style={{ background: "#0b0b0b", padding: "12px" }}>
+                  <Chatbot
+                    config={config}
+                    messageParser={MessageParser}
+                    actionProvider={ActionProvider}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Floating Button */}
+            <button
+              onClick={() => setIsOpen((prev) => !prev)}
+              style={{
+                backgroundColor: "#1976d2",
+                border: "none",
+                borderRadius: "50%",
+                width: "56px",
+                height: "56px",
+                cursor: "pointer",
+                boxShadow: "0 10px 30px rgba(25,118,210,0.24)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "transform 0.2s ease",
+              }}
+              aria-label="Toggle chat"
+            >
+              <MessageCircle
+                size={28}
+                color="#f4f3f3ff" />
+            </button>
+          </div>
+
+          {/* Animations & custom styles */}
+          <style>
+            {`
           @keyframes slideUp {
             from { transform: translateY(12px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
@@ -2367,7 +2373,9 @@ function App() {
             color: #fff;
           }
         `}
-      </style>
+          </style>
+        </div>
+      )}
     </div>
   );
 }
