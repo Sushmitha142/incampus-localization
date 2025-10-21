@@ -1056,6 +1056,45 @@ function App() {
   const [isOpen, setIsOpen] = useState(false);
 
 
+  // Inside the App function, after all your 'useState' declarations:
+
+  useEffect(() => {
+    // Read the part of the URL after the '#' (e.g., '#/cblock' or '#/dblock')
+    const hash = window.location.hash.slice(2).toLowerCase();
+
+    if (hash) {
+      // Find the block name from the hash (e.g., 'cblock')
+      const targetBlock = hash.split('/')[0];
+
+      // Check if the hash matches a known block or canteen
+      if (['cblock', 'dblock', 'ablock', 'bblock', 'eblock', 'canteen'].includes(targetBlock)) {
+
+        // 1. Set the indoor state to true
+        setIndoorMode(true);
+
+        // 2. Set the current block
+        setBlock(targetBlock);
+
+        // 3. Set the default floor (e.g., 'ground' for D Block, 'first' for C Block)
+        // Use your existing logic for default floors
+        if (targetBlock === 'ablock') {
+          setFloor('ground');
+        } else if (targetBlock === 'bblock') {
+          setFloor('ground');
+        } else if (targetBlock === 'cblock') {
+          setFloor('ground');
+        } else if (targetBlock === 'dblock') {
+          setFloor('ground');
+        } else if (targetBlock === 'eblock') {
+          setFloor('ground');
+        } else if (targetBlock === 'canteen') {
+          setFloor('ground');
+        }
+        // You might need to add logic for other blocks (A, B, E) as well
+      }
+    }
+    // The dependency array is empty so it runs only once when the component mounts
+  }, []);
   useEffect(() => {
     const all = [
       ...campusLocations,
@@ -1827,7 +1866,7 @@ function App() {
             <button
               onClick={() => {
                 setBlock("cblock");
-                setFloor("first"); // Default floor for D Block
+                setFloor("ground"); // Default floor for D Block
                 setIndoorRoute(null);
               }}
               style={{
@@ -1877,7 +1916,7 @@ function App() {
             <button
               onClick={() => {
                 setBlock("canteen");
-                setFloor("first"); // Default floor for D Block
+                setFloor("ground"); // Default floor for D Block
                 setIndoorRoute(null);
               }}
               style={{
