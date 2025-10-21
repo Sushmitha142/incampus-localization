@@ -803,7 +803,7 @@ const dBlockGroundRooms = [
 ];
 
 // First floor (aligned right-side like ground)
-const firstFloorStart = [400, 280];
+
 const dBlockFirstRooms = [
   { id: "washroom1", name: "Washroom", x: 570, y: 300, w: 100, h: 60, path: [[300, 260], [300, 150], [620, 150], [620, 295]] },
   { id: "avhall1", name: "AV Hall", x: 350, y: 210, w: 200, h: 150, path: [[300, 260], [300, 150], [450, 150], [450, 205]] },
@@ -813,7 +813,7 @@ const dBlockFirstRooms = [
 ];
 
 // Second floor (kept aligned)
-const secondFloorStart = [400, 280];
+
 const dBlockSecondRooms = [
   { id: "me201", name: "ME 201", x: 50, y: 160, w: 120, h: 90, path: [[300, 270], [300, 210], [180, 210]] },
   { id: "me205", name: "ME 205", x: 500, y: 50, w: 120, h: 90, path: [[300, 270], [300, 200], [580, 200], [580, 150]] },
@@ -827,7 +827,7 @@ const dBlockSecondRooms = [
 ];
 
 // Third floor (aligned: AIDS staffroom same as AIML staffroom)
-const thirdFloorStart = [400, 280];
+
 const dBlockThirdRooms = [
   { id: "cv302", name: "CV 302", x: 410, y: 50, w: 120, h: 90, path: [[300, 270], [300, 200], [450, 200], [450, 150]] },
   { id: "cv301", name: "CV 301", x: 270, y: 50, w: 120, h: 90, path: [[300, 270], [300, 150]] },
@@ -839,7 +839,7 @@ const dBlockThirdRooms = [
 ];
 
 // Fourth floor (same alignment again)
-const fourthFloorStart = [400, 280];
+
 const dBlockFourthRooms = [
   { id: "cv400", name: "CV 400", x: 50, y: 160, w: 120, h: 90, path: [[300, 270], [300, 200], [180, 200]] },
   { id: "cv404", name: "CV 404", x: 530, y: 50, w: 120, h: 90, path: [[300, 270], [300, 200], [580, 200], [580, 150]] },
@@ -1052,7 +1052,6 @@ function App() {
   const [indoorMode, setIndoorMode] = useState(false);
   const [floor, setFloor] = useState("ground");
   const [indoorRoute, setIndoorRoute] = useState(null);
-  const [pendingClassroom, setPendingClassroom] = useState(null);
   const [block, setBlock] = useState("dblock");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -1106,8 +1105,6 @@ function App() {
       setRouteCoordinates(null);
     }
   };
-
-
   const handleNavigate = () => {
     if (!fromResult || !selectedResult) return;
 
@@ -1648,11 +1645,6 @@ function App() {
                         setShowSuggestions(false);
                         setSearch(item.name);
                         setSelectedResult(item);
-                        if (item.type === "indoor-room") {
-                          setPendingClassroom(item);
-                        } else {
-                          setPendingClassroom(null);
-                        }
                       }}
                       style={{
                         padding: "8px",
