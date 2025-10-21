@@ -1805,14 +1805,18 @@ function App() {
           {/* BLOCK SELECTION BUTTONS: NEW */}
           <div style={{
             marginBottom: "10px",
-            display: "inline-flex", // Use inline-flex to wrap content tightly
-            padding: "10px",        // Add padding inside the border box
-            border: "2px solid #395168ff", // Blue border for highlighting
-            borderRadius: "50px",   // Curved corners for the box
-            gap: "10px",            // Space between buttons (optional, but cleaner than marginRight)
-            backgroundColor: "#f0f8ff", // Light background color for contrast (optional)
+            display: "flex",
+            flexWrap: "wrap", // Use inline-flex to wrap content tightly
+            justifyContent: "center", // ✅ center all buttons
+            alignItems: "center",
+            padding: "10px",
+            border: "2px solid #395168ff",
+            borderRadius: "50px",
+            gap: "10px",
+            backgroundColor: "#f0f8ff",
             boxShadow: "0px 4px 12px rgba(25, 118, 210, 0.2)",
-            alignment: "center",
+            maxWidth: "100%", // ✅ prevent overflow
+            overflowX: "auto",
           }}>
             <span
               style={{
@@ -1822,6 +1826,7 @@ function App() {
                 paddingRight: "10px",
                 paddingLeft: "10px",
                 lineHeight: "100px",
+                whiteSpace: "nowrap",
                 // Add slight padding to the right of the label before the buttons
               }}
             >
@@ -2039,24 +2044,25 @@ function App() {
             style={{
               position: "relative",
               width: "95%",
-              height: "420px",
+              maxWidth: "900px", // ✅ gives room on desktop but fits phone screens
               margin: "24px auto",
-              overflowX: "auto",
-              minWidth: "320px",
-              maxWidth: "820px",
               border: "1.5px solid #1a237e",
-              background: `
-                linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%),
-                repeating-linear-gradient(90deg, #e3eafc 0 39px, #c3cfe2 40px 40px),
-                repeating-linear-gradient(180deg, #e3eafc 0 39px, #c3cfe2 40px 40px)
-              `,
-              boxShadow: "0 12px 36px 0 rgba(30, 42, 90, 0.18)",
               borderRadius: "22px",
-              overflow: "hidden",
+              background: `
+                  linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%),
+                  repeating-linear-gradient(90deg, #e3eafc 0 39px, #c3cfe2 40px 40px),
+                  repeating-linear-gradient(180deg, #e3eafc 0 39px, #c3cfe2 40px 40px)
+                `,
+              boxShadow: "0 12px 36px 0 rgba(30, 42, 90, 0.18)",
               transition: "box-shadow 0.3s, border 0.3s",
-              // ... (Indoor map container styles remain the same) ...
+              overflowX: "auto", // ✅ allows horizontal scroll if needed
+              overflowY: "hidden",
+              minHeight: "420px", // ✅ vertical scroll on smaller screens
+              height: "auto", // ✅ auto height for responsiveness
+              padding: "1rem", // ✅ inner spacing for smaller screens
             }}
           >
+
             {/* All your map content (Floor Title, Entrance Marker, and Rooms) go here */}
 
             {/* Floor Title - UPDATED TO USE 'block' STATE */}
@@ -2240,13 +2246,20 @@ function App() {
                 setIndoorRoute(null);
               }}
               style={{
+                position: "absolute",        // ✅ anchors button inside the map box
+                bottom: "15px",              // ✅ places it near the bottom
+                left: "50%",
+                transform: "translateX(-50%)",
                 padding: "10px 20px",
                 background: "#1976d2",
                 color: "#fff",
                 border: "none",
-                borderRadius: "6px",
-
-                // ... (Back button styles remain the same) ...
+                borderRadius: "8px",
+                fontWeight: "bold",
+                cursor: "pointer",
+                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
+                transition: "transform 0.2s ease, background 0.2s ease",
+                zIndex: 10,
               }}
             >
               Back to Outdoor Map
