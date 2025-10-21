@@ -784,16 +784,6 @@ const cBlockFifthRooms = [
   { id: "lh501", name: "LH-501", x: 660, y: 155, w: 90, h: 60, path: [[320, 150], [320, 130], [700, 130], [700, 150]] },
   { id: "student_lounge_5", name: "Student Lounge", x: 760, y: 155, w: 50, h: 60, path: [[320, 150], [320, 130], [785, 130], [785, 150]] },
 ];
-// Combine all floors into a single structure for easy reference
-const cBlockLayout = {
-  entrance: cBlockEntrance,
-  groundFloor: cBlockGroundRooms, // Blank
-  firstFloor: cBlockFirstRooms,   // EEE
-  secondFloor: cBlockSecondRooms, // ISE
-  thirdFloor: cBlockThirdRooms,   // ECE
-  fourthFloor: cBlockFourthRooms, // Mixed
-  fifthFloor: cBlockFifthRooms    // CSE
-};
 
 // Example usage:
 // console.log(cBlockLayout.firstFloor);
