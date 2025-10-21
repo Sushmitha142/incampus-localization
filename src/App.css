@@ -1,38 +1,194 @@
-.App {
+/* App Container */
+.app-container {
+  padding: 20px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f0f4ff, #e0f7fa);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Headings */
+h1, h2, h3 {
+  color: #2c3e50;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Buttons */
+button {
+  padding: 12px 24px;
+  margin: 10px;
+  background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button:hover {
+  background: linear-gradient(90deg, #2575fc 0%, #6a11cb 100%);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+/* Spacer */
+.spacer {
+  margin: 20px 0;
+}
+
+/* Search Input */
+.search-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #2575fc;
+  outline: none;
+}
+
+/* Routes List */
+.routes-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 10px;
+}
+
+.route-item {
+  padding: 15px;
+  background-color: #ffffff;
+  border-left: 5px solid #2575fc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.route-item:hover {
+  background-color: #f0f4ff;
+}
+
+/* Indoor Image */
+.indoor-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  margin: 20px 0;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* QR Scanner */
+.qr-scanner {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* Destination Selector */
+.destination-selector {
+  margin: 30px 0;
+}
+
+.locations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.location-item {
+  padding: 12px;
+  background-color: #ffffff;
+  border-left: 5px solid #6a11cb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.location-item:hover {
+  background-color: #f0f4ff;
+}
+
+.location-item.selected {
+  background-color: #6a11cb;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Disabled Button */
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero-card {
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  animation: fadeIn 1s ease-in;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  color: #1976d2;
+  margin-bottom: 10px;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.hero-image {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #90caf9;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: #2196f3;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #1976d2;
 }
