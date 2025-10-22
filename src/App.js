@@ -1053,18 +1053,39 @@ function App() {
   const [indoorRoute, setIndoorRoute] = useState(null);
   const [block, setBlock] = useState("dblock");
   const [isOpen, setIsOpen] = useState(false);
-  // New hook to calculate scale factor
-  // Inside function App() { ... }
-
-  // ... (existing state declarations) ...
-
-
-
-
-  // Inside the App function, after all your 'useState' declarations:
+  const [isDesktopView, setIsDesktopView] = useState(false);
 
   useEffect(() => {
-    // Read the part of the URL after the '#' (e.g., '#/cblock' or '#/dblock')
+    const params = new URLSearchParams(window.location.search);
+    const desktopParam = params.get("view") === "desktop";
+
+    // Initial state
+    setIsDesktopView(desktopParam);
+    if (desktopParam) document.body.classList.add("desktop-mode");
+
+    const handleResizeOrRotate = () => {
+      if (window.innerWidth < 700 || window.matchMedia("(orientation: portrait)").matches) {
+        document.body.classList.remove("desktop-mode");
+        setIsDesktopView(false);
+      } else if (desktopParam) {
+        document.body.classList.add("desktop-mode");
+        setIsDesktopView(true);
+      }
+    };
+
+    window.addEventListener("resize", handleResizeOrRotate);
+    window.addEventListener("orientationchange", handleResizeOrRotate);
+
+    return () => {
+      window.removeEventListener("resize", handleResizeOrRotate);
+      window.removeEventListener("orientationchange", handleResizeOrRotate);
+    };
+  }, []);
+
+
+
+
+  useEffect(() => {
     const hash = window.location.hash.slice(2).toLowerCase();
 
     if (hash) {
@@ -1558,9 +1579,8 @@ function App() {
   }
 
   return (
-    <div className="app-container" >
+    <div className={`app-container ${isDesktopView ? "force-desktop" : ""}`}>
       <h1 className="app-title" style={{ fontSize: "30px", color: "#000000ff" }}>CAMPUS NAVIGATOR</h1>
-
       {!indoorMode && (
         <div style={{
           display: "flex",
