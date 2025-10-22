@@ -2314,10 +2314,12 @@ function App() {
           </style>
         </div>
       )}
+      {//*Floating button container*//}
+      }
       <div
         style={{
           position: "fixed",
-          bottom: "5vh",
+          bottom: "20px",
           right: "5vw",
           zIndex: 9999,
         }}
@@ -2326,7 +2328,7 @@ function App() {
           <div
             style={{
               position: "absolute",
-              bottom: "0px",
+              bottom: "56px",
               right: "0",
               width: "300px",
               backgroundColor: "#0b0b0b",
