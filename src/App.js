@@ -1054,20 +1054,26 @@ function App() {
   const [block, setBlock] = useState("dblock");
   const [isOpen, setIsOpen] = useState(false);
   const [isDesktopView, setIsDesktopView] = useState(false);
+  const [layout, setLayout] = useState("outdoor");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const desktopParam = params.get("view") === "desktop";
 
     // Initial state
-    setIsDesktopView(desktopParam);
-    if (desktopParam) document.body.classList.add("desktop-mode");
+    if (layout === "indoor" && desktopParam) {
+      setIsDesktopView(true);
+      document.body.classList.add("desktop-mode");
+    } else {
+      setIsDesktopView(false);
+      document.body.classList.remove("desktop-mode");
+    }
 
     const handleResizeOrRotate = () => {
       if (window.innerWidth < 700 || window.matchMedia("(orientation: portrait)").matches) {
         document.body.classList.remove("desktop-mode");
         setIsDesktopView(false);
-      } else if (desktopParam) {
+      } else if (layout === "indoor" && desktopParam) {
         document.body.classList.add("desktop-mode");
         setIsDesktopView(true);
       }
