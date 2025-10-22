@@ -1572,7 +1572,7 @@ function App() {
                     background: "#f5f7fa",
                     borderRadius: 12,
                     boxShadow: "0 2px 12px #e3eafc",
-                    padding: "18px 18px 12px 18px",
+                    padding: "5px 5px 5px 5px",
                     border: "1.5px solid #b0b8d1"
                 }}>
                     <div style={{ flex: 1, position: "relative", minWidth: 100 }}>
@@ -1706,7 +1706,7 @@ function App() {
                     </div>
                     <button
                         style={{
-                            padding: "12px 20px",
+                            padding: "0px 20px",
                             background: "#1976d2",
                             color: "#fff",
                             border: "none",
@@ -1738,7 +1738,7 @@ function App() {
                         <button
                             style={{
                                 padding: "10px 20px",
-                                margin: "10px 0",
+                                margin: "0px 0px",
                                 background: "#1976d2",
                                 color: "#fff",
                                 border: "none",
@@ -1764,7 +1764,9 @@ function App() {
                     <MapContainer
                         center={[12.967640311993218, 77.71392045940188]}
                         zoom={18}
-                        style={{ height: "400px", width: "100%" }}
+                        style={{
+                            height: "375px", width: "100%",
+                        }}
                     >
                         <TileLayer
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -2267,80 +2269,7 @@ function App() {
 
 
                     {/* Floating Chatbot Button + Chat window */}
-                    <div
-                        style={{
-                            position: "fixed",
-                            bottom: "25px",
-                            right: "25px",
-                            zIndex: 9999,
-                        }}
-                    >
-                        {isOpen && (
-                            <div
-                                style={{
-                                    position: "absolute",
-                                    bottom: "0px",
-                                    right: "0",
-                                    width: "300px",
-                                    backgroundColor: "#0b0b0b",
-                                    borderRadius: "12px",
-                                    boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-                                    overflow: "hidden",
-                                    animation: "slideUp 0.18s ease-in-out",
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        alignItems: "center",
-                                        backgroundColor: "#003030",
-                                        color: "#fff",
-                                        padding: "10px 12px",
-                                        fontWeight: "700",
-                                    }}
-                                >
-                                    🤖 Campus Chatbot
-                                    <X
-                                        size={18}
-                                        style={{ cursor: "pointer" }}
-                                        onClick={() => setIsOpen(false)}
-                                    />
-                                </div>
 
-                                <div style={{ background: "#0b0b0b", padding: "12px" }}>
-                                    <Chatbot
-                                        config={config}
-                                        messageParser={MessageParser}
-                                        actionProvider={ActionProvider}
-                                    />
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Floating Button */}
-                        <button
-                            onClick={() => setIsOpen((prev) => !prev)}
-                            style={{
-                                backgroundColor: "#1976d2",
-                                border: "none",
-                                borderRadius: "50%",
-                                width: "56px",
-                                height: "56px",
-                                cursor: "pointer",
-                                boxShadow: "0 10px 30px rgba(25,118,210,0.24)",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                transition: "transform 0.2s ease",
-                            }}
-                            aria-label="Toggle chat"
-                        >
-                            <MessageCircle
-                                size={28}
-                                color="#f4f3f3ff" />
-                        </button>
-                    </div>
 
                     {/* Animations & custom styles */}
                     <style>
@@ -2385,6 +2314,82 @@ function App() {
                     </style>
                 </div>
             )}
+            {//*Floating button container*//}
+            }
+            <div
+                style={{
+                    position: "fixed",
+                    bottom: "20px",
+                    right: "5vw",
+                    zIndex: 9999,
+                }}
+            >
+                {isOpen && (
+                    <div
+                        style={{
+                            position: "absolute",
+                            bottom: "56px",
+                            right: "0",
+                            width: "300px",
+                            backgroundColor: "#0b0b0b",
+                            borderRadius: "12px",
+                            boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+                            overflow: "hidden",
+                            animation: "slideUp 0.18s ease-in-out",
+                        }}
+                    >
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                                backgroundColor: "#003030",
+                                color: "#fff",
+                                padding: "10px 12px",
+                                fontWeight: "700",
+                            }}
+                        >
+                            🤖 Campus Chatbot
+                            <X
+                                size={18}
+                                style={{ cursor: "pointer" }}
+                                onClick={() => setIsOpen(false)}
+                            />
+                        </div>
+
+                        <div style={{ background: "#0b0b0b", padding: "12px" }}>
+                            <Chatbot
+                                config={config}
+                                messageParser={MessageParser}
+                                actionProvider={ActionProvider}
+                            />
+                        </div>
+                    </div>
+                )}
+
+                {/* Floating Button */}
+                <button
+                    onClick={() => setIsOpen((prev) => !prev)}
+                    style={{
+                        backgroundColor: "#1976d2",
+                        border: "none",
+                        borderRadius: "50%",
+                        width: "56px",
+                        height: "56px",
+                        cursor: "pointer",
+                        boxShadow: "0 10px 30px rgba(25,118,210,0.24)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        transition: "transform 0.2s ease",
+                    }}
+                    aria-label="Toggle chat"
+                >
+                    <MessageCircle
+                        size={24}
+                        color="#f4f3f3ff" />
+                </button>
+            </div>
         </div>
     );
 }

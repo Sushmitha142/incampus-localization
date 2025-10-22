@@ -1812,7 +1812,9 @@ function App() {
           {/* BLOCK SELECTION BUTTONS: NEW */}
           <div style={{
             marginBottom: "10px",
-            display: "inline-flex", // Use inline-flex to wrap content tightly
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",// Use inline-flex to wrap content tightly
             padding: "10px",        // Add padding inside the border box
             border: "2px solid #395168ff", // Blue border for highlighting
             borderRadius: "50px",   // Curved corners for the box
@@ -2046,7 +2048,8 @@ function App() {
           <div
             style={{
               position: "relative",
-              width: "820px",
+              width: "95vw",
+              maxWidth: "820px",
               height: "420px",
               margin: "24px auto",
               border: "1.5px solid #1a237e",
