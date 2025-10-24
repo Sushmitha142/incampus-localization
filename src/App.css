@@ -25,7 +25,7 @@ button {
   padding: 12px 24px;
   margin: 10px;
   background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-  color: #fff;
+  color: #8f8f8f;
   border: none;
   border-radius: 30px;
   cursor: pointer;
@@ -193,7 +193,7 @@ button:disabled {
 .nav-button {
   padding: 12px 20px;
   font-size: 1rem;
-  background-color: #2196f3;
+  background-color: #768795;
   border: none;
   border-radius: 8px;
   color: white;
@@ -202,5 +202,5 @@ button:disabled {
 }
 
 .nav-button:hover {
-  background-color: #1976d2;
+  background-color: #6b8bac;
 }

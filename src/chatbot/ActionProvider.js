@@ -64,12 +64,19 @@ const findBestMatch = (query, targetList, threshold = 0.45) => {
 
         targetNameTokens.push(normalizedTarget.replace(/\s/g, '_'));
 
-        const isSubstringMatch = rawQuery.includes(normalizedTarget.replace(/\s/g, ''));
+        // --- Improved substring / partial phrase detection ---
+        const normalizedTargetClean = normalizedTarget.replace(/\s+/g, '').trim();
+        const rawQueryClean = rawQuery.replace(/\s+/g, '').trim();
+
+        // Direct substring check (like "whereisdblock" includes "dblock")
+        const isSubstringMatch =
+            rawQueryClean.includes(normalizedTargetClean) ||
+            rawQuery.includes(target.toLowerCase()); // handles normal spacing
 
         let score = getScore(queryTokens, targetNameTokens);
 
         if (isSubstringMatch) {
-            score += 0.15;
+            score += 0.5;
         }
 
         if (score > maxScore) {
