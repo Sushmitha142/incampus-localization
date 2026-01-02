@@ -619,77 +619,99 @@ const destinationIcon = new L.Icon({
   shadowSize: [41, 41],
 });
 //A Block room data
-const aBlockEntrance = { x: 400, y: 300 }; // Assuming a corner entrance for layout
+const aBlockEntrance = { x: 400, y: 300 };
+const aBlockEntranceCoords = [400,285]; // Assuming a corner entrance for layout
 const aBlockGroundRooms = [
-  { id: "room", name: "room", x: 90, y: 40, w: 150, h: 60, path: [[330, 390], [330, 250], [250, 250], [250, 70], [220, 70]] },
-  { id: "seminarhall1", name: "Seminar Hall", x: 90, y: 200, w: 70, h: 90, path: [[330, 390], [330, 250], [160, 250]] },
-  { id: "room2", name: "room", x: 370, y: 60, w: 140, h: 120, path: [[330, 390], [330, 250], [400, 250], [400, 150]] },
-  { id: "placement", name: "Placement room", x: 90, y: 120, w: 150, h: 70, path: [[330, 390], [330, 250], [230, 250], [230, 180]] },
-  { id: "a_g_stairs", name: "Stairs", x: 270, y: 50, w: 60, h: 120, path: [[330, 390], [330, 250], [300, 250], [300, 170]] },
-  { id: "seminarhall2", name: "Seminar Hall", x: 90, y: 300, w: 70, h: 90, path: [[330, 390], [330, 250], [180, 250], [180, 350], [150, 350]] },
-  { id: "lh002", name: "LH 002", x: 190, y: 300, w: 70, h: 90, path: [[330, 390], [330, 250], [240, 250], [240, 300]] },
-
+  { id: "room", name: "Room", x: 140, y: 40, w: 150, h: 60, path: [aBlockEntranceCoords ,[400, 250], [305, 250], [305, 70], [295, 70]] },
+  { id: "seminarhall1", name: "Seminar Hall", x: 140, y: 200, w: 70, h: 90, path: [aBlockEntranceCoords ,[400, 250], [215, 250]] },
+  { id: "room2", name: "Room", x: 420, y: 60, w: 140, h: 120, path: [aBlockEntranceCoords ,[400, 100], [415, 100]] },
+  { id: "placement", name: "Placement room", x: 140, y: 120, w: 150, h: 70, path: [aBlockEntranceCoords ,[400, 250], [305, 250], [305, 170], [295, 170]] },
+  { id: "a_g_stairs", name: "Stairs", x: 320, y: 50, w: 60, h: 120, path: [[350, 180]] },
+  { id: "seminarhall2", name: "Seminar Hall", x: 140, y: 300, w: 70, h: 90, path: [aBlockEntranceCoords ,[400, 250], [230, 250],[230,350],[215,350]] },
+  { id: "lh002", name: "LH 002", x: 240, y: 300, w: 70, h: 90, path: [aBlockEntranceCoords ,[400, 250], [230, 250],[230,350],[235,350]] },
 ];
+
+
+
+
+const STAIR_ANCHOR = [510, 250];
+
 const aBlockFirstRooms = [
-  { id: "lh104", name: "LH 104", x: 30, y: 40, w: 100, h: 80, path: [[210, 150], [210, 200], [150, 200], [150, 100], [120, 100]] },
-  { id: "excellence_reach_center", name: "Excellence Reach Center", x: 30, y: 130, w: 100, h: 80, path: [[210, 150], [210, 200], [130, 200]] },
-  { id: "lh103", name: "LH 103", x: 30, y: 220, w: 100, h: 80, path: [[210, 150], [210, 240], [130, 240]] },
-  { id: "lh102", name: "LH 102", x: 30, y: 310, w: 100, h: 80, path: [[210, 150], [210, 330], [130, 330]] },
-  { id: "student_lounge_1", name: "Student Lounge", x: 240, y: 60, w: 120, h: 90, path: [[210, 150], [210, 200], [300, 200], [300, 150]] },
-  { id: "washroom1", name: "Washroom", x: 370, y: 60, w: 100, h: 80, path: [[210, 150], [210, 200], [400, 200], [400, 150]] },
-  { id: "mba_staffroom", name: "MBA Staffroom", x: 480, y: 60, w: 120, h: 90, path: [[210, 150], [210, 200], [500, 200], [500, 150]] },
-  { id: "  ", name: " ", x: 240, y: 250, w: 120, h: 90, path: [[210, 150], [210, 200], [300, 200], [300, 250]] },
-  { id: "shifting_area", name: "Shifting Area", x: 370, y: 250, w: 100, h: 90, path: [[210, 150], [210, 200], [400, 200], [400, 250]] },
-  { id: "library", name: "Library", x: 480, y: 250, w: 120, h: 90, path: [[210, 150], [210, 200], [500, 200], [500, 250]] },
-  { id: "a_f_stairs", name: "Stairs", x: 160, y: 40, w: 60, h: 130, path: [[210, 150], [210, 200], [180, 200], [180, 150]] },
+  { id: "lh102", name: "LH 102", x: 570, y: 60, w: 100, h: 60, path: [STAIR_ANCHOR, [510, 90], [570, 90]] },
+  { id: "lh103", name: "LH 103", x: 570, y: 130, w: 100, h: 60, path: [STAIR_ANCHOR, [510, 170], [570, 170]] },
+  { id: "excellence_reach_center", name: "Excellence Reach Center", x: 570, y: 200, w: 100, h: 60, path: [STAIR_ANCHOR, [510, 220], [570, 220]] },
+  { id: "lh104", name: "LH 104", x: 570, y: 270, w: 100, h: 60, path: [STAIR_ANCHOR, [510, 220], [550, 220], [550, 300], [570, 300]] },
 
+  { id: "student_lounge_1", name: "Student Lounge", x: 340, y: 230, w: 120, h: 90, path: [STAIR_ANCHOR, [510, 180], [400, 180], [400, 230]] },
+  { id: "washroom1", name: "Washroom", x: 230, y: 230, w: 100, h: 80, path: [STAIR_ANCHOR, [510, 180], [280, 180], [280, 230]] },
+  { id: "mba_staffroom", name: "MBA Staffroom", x: 100, y: 230, w: 120, h: 90, path: [STAIR_ANCHOR, [510, 180], [180, 180], [180, 230]] },
+
+  { id: "shifting_area", name: "Shifting Area", x: 230, y: 50, w: 100, h: 90, path: [STAIR_ANCHOR, [510, 180], [280, 180], [280, 140]] },
+  { id: "library", name: "Library", x: 100, y: 50, w: 120, h: 90, path: [STAIR_ANCHOR, [510, 180], [180, 180], [180, 140]] },
+
+  { id: "a_f_stairs", name: "Stairs", x: 480, y: 250, w: 60, h: 90, path: [STAIR_ANCHOR] },
 ];
+
+
+
+
+
 
 // --- 2ND FLOOR LAYOUT - DEPARTMENT OF ISE (Based on image_faa0e7.png) ---
 const aBlockSecondRooms = [
-  { id: "lh 204", name: "LH 204", x: 30, y: 40, w: 120, h: 80, path: [[260, 150], [260, 200], [180, 200], [180, 100], [150, 100]] },
-  { id: "lh 203", name: "LH 203", x: 30, y: 130, w: 120, h: 90, path: [[260, 150], [260, 200], [150, 200]] },
-  { id: "lh 202", name: "LH 202", x: 30, y: 230, w: 120, h: 90, path: [[260, 150], [260, 200], [180, 200], [180, 280], [150, 280]] },
-  { id: "lh 201", name: "LH 201", x: 30, y: 330, w: 120, h: 80, path: [[260, 150], [260, 250]] },
-  { id: "washroom", name: "Washroom", x: 395, y: 40, w: 100, h: 100, path: [[260, 150], [260, 200], [420, 200], [420, 140]] },
-  { id: "mca 201 research lab", name: "MCA 201(Research Lab)", x: 290, y: 40, w: 100, h: 120, path: [[260, 150], [260, 200], [350, 200], [350, 150]] },
-  { id: "room3", name: "Room 3", x: 500, y: 40, w: 100, h: 120, path: [[260, 150], [260, 200], [520, 200], [520, 150]] },
-  { id: "a_s_stairs", name: "Stairs", x: 200, y: 40, w: 80, h: 120, path: [[260, 150], [260, 200], [220, 200], [220, 150]] },
+  { id: "lh204", name: "LH 204", x: 570, y: 60, w: 100, h: 60, path: [STAIR_ANCHOR, [510, 90], [570, 90]] },
+  { id: "lh203", name: "LH 203", x: 570, y: 130, w: 100, h: 60, path: [STAIR_ANCHOR, [510, 170], [570, 170]] },
+  { id: "lh202", name: "LH 202", x: 570, y: 200, w: 100, h: 60, path: [STAIR_ANCHOR, [510, 220], [570, 220]] },
+  { id: "lh201", name: "LH 201", x: 570, y: 270, w: 100, h: 60, path: [STAIR_ANCHOR, [510, 220], [550, 220], [550, 300], [570, 300]] },
 
+  { id: "mca_201_research_lab", name: "MCA 201 (Research Lab)", x: 340, y: 230, w: 120, h: 90, path: [STAIR_ANCHOR, [510, 180], [400, 180], [400, 230]] },
+  { id: "washroom2", name: "Washroom", x: 230, y: 230, w: 100, h: 80, path: [STAIR_ANCHOR, [510, 180], [280, 180], [280, 230]] },
+  { id: "room3", name: "Room 3", x: 100, y: 230, w: 120, h: 90, path: [STAIR_ANCHOR, [510, 180], [180, 180], [180, 230]] },
+
+  { id: "a_s_stairs", name: "Stairs", x: 480, y: 250, w: 60, h: 90, path: [STAIR_ANCHOR] },
 ];
+
+
+
 
 // --- 3RD FLOOR LAYOUT - DEPARTMENT OF ECE (Based on image_f3fad4fd.jpg) ---
 const aBlockThirdRooms = [
-  { id: "room1", name: "Room 1", x: 30, y: 40, w: 120, h: 90, path: [[260, 150], [260, 200], [180, 200], [180, 100], [150, 100]] },
-  { id: "srudo year IV", name: "srudo year IV", x: 30, y: 140, w: 120, h: 90, path: [[260, 150], [260, 200], [150, 200]] },
-  { id: "srudo year IV", name: "srudo year IV", x: 30, y: 240, w: 120, h: 90, path: [[260, 150], [260, 200], [180, 200], [180, 280], [150, 280]] },
-  { id: "room2", name: "Room 2", x: 220, y: 240, w: 120, h: 90, path: [[260, 150], [260, 250]] },
-  { id: "mca301", name: "MCA 301", x: 360, y: 240, w: 120, h: 90, path: [[260, 150], [260, 200], [400, 200], [400, 250]] },
-  { id: "mca302", name: "MCA 302", x: 490, y: 240, w: 120, h: 90, path: [[260, 150], [260, 200], [520, 200], [520, 250]] },
-  { id: "cmr_university school of aerin", name: "CMR University School of A", x: 290, y: 40, w: 160, h: 120, path: [[260, 150], [260, 200], [350, 200], [350, 150]] },
-  { id: "room3", name: "Room 3", x: 460, y: 40, w: 140, h: 120, path: [[260, 150], [260, 200], [500, 200], [500, 150]] },
-  { id: "a_s_stairs", name: "Stairs", x: 200, y: 40, w: 80, h: 120, path: [[260, 150], [260, 200], [220, 200], [220, 150]] },
+  { id: "room1", name: "Room 1", x: 570, y: 240, w: 120, h: 90, path: [STAIR_ANCHOR, [510, 220], [550, 220], [550, 280], [570, 280]] },
 
+  { id: "srudo year IV", name: "srudo year IV", x: 570, y: 40, w: 120, h: 150, path: [STAIR_ANCHOR, [510, 95], [570, 95]] },
+
+  { id: "room2", name: "Room 2", x: 370, y: 40, w: 120, h: 90, path: [STAIR_ANCHOR, [510, 180], [420, 180], [420, 140]] },
+
+  { id: "mca301", name: "MCA 301", x: 235, y: 40, w: 120, h: 90, path: [STAIR_ANCHOR, [510, 180], [300, 180], [300, 140]] },
+
+  { id: "mca302", name: "MCA 302", x: 100, y: 40, w: 120, h: 90, path: [STAIR_ANCHOR, [510, 180], [180, 180], [180, 140]] },
+
+  { id: "cmr_university school of aerin", name: "CMR University School of A", x: 270, y: 230, w: 180, h: 100, path: [STAIR_ANCHOR, [510, 180], [350, 180], [350, 230]] },
+
+  { id: "room3", name: "Room 3", x: 100, y: 230, w: 150, h: 100, path: [STAIR_ANCHOR, [510, 180], [180, 180], [180, 230]] },
+
+  { id: "a_s_stairs", name: "Stairs", x: 480, y: 250, w: 60, h: 90, path: [STAIR_ANCHOR, [310, 150], [310, 200], [270, 200], [270, 150]] },
 ];
+
+
 
 // --- 4TH FLOOR DEPARTMENT LAYOUT (Based on image_15279244.jpg) ---
 const aBlockFourthRooms = [
-  { id: "auditorium", name: "Auditorium", x: 200, y: 250, w: 160, h: 120, path: [[260, 150], [260, 270]] },
-  { id: "material library", name: "Material Library", x: 290, y: 40, w: 200, h: 120, path: [[260, 150], [260, 200], [350, 200], [350, 150]] },
-  { id: "work_shop", name: "Work Shop", x: 420, y: 250, w: 140, h: 120, path: [[260, 150], [260, 200], [520, 200], [520, 260]] },
-  { id: "a_s_stairs", name: "Stairs", x: 200, y: 40, w: 80, h: 120, path: [[260, 150], [260, 200], [220, 200], [220, 150]] },
-  { id: "lh 204", name: "LH 204", x: 30, y: 40, w: 120, h: 180, path: [[260, 150], [260, 200], [180, 200], [180, 100], [150, 100]] },
-  { id: "lh 202", name: "LH 202", x: 30, y: 230, w: 120, h: 180, path: [[260, 150], [260, 200], [180, 200], [180, 280], [150, 280]] },
-  { id: "washroom", name: "Washroom", x: 500, y: 40, w: 100, h: 100, path: [[260, 150], [260, 200], [520, 200], [520, 130]] },
-
-
+  { id: "auditorium", name: "Auditorium", x: 290, y: 40, w: 160, h: 100, path: [STAIR_ANCHOR, [510, 180], [370, 180], [370, 145]] },
+  { id: "material library", name: "Material Library", x: 245, y: 230, w: 200, h: 100, path: [STAIR_ANCHOR, [510, 180], [350, 180], [350, 230]] },
+  { id: "work_shop", name: "Work Shop", x: 130, y: 40, w: 140, h: 100, path: [STAIR_ANCHOR, [510, 180], [200, 180], [200, 145]] },
+  { id: "a_s_stairs", name: "Stairs", x: 480, y: 250, w: 60, h: 90, path: [STAIR_ANCHOR] },
+  { id: "lh 204", name: "LH 204", x: 570, y: 200, w: 120, h: 120, path: [STAIR_ANCHOR, [510, 230], [570, 230]] },
+  { id: "lh 202", name: "LH 202", x: 570, y: 60, w: 120, h: 120, path: [STAIR_ANCHOR, [510, 120], [570, 120]] },
+  { id: "washroom2", name: "Washroom", x: 130, y: 230, w: 100, h: 80, path: [STAIR_ANCHOR, [510, 180], [180, 180], [180, 230]] },
 ];
 
-// --- 5TH FLOOR LAYOUT - DEPARTMENT OF CSE (Based on image_7bcadc98.jpg) ---
 const aBlockFifthRooms = [
-  { id: "a_t_stairs", name: "Stairs", x: 40, y: 40, w: 100, h: 250, path: [] },
-  { id: "empty area", name: "Empty Area", x: 150, y: 40, w: 450, h: 300, path: [[120, 280], [120, 320], [160, 320]] },
+  { id: "a_s_stairs", name: "Stairs", x: 560, y: 250, w: 60, h: 90, path: [STAIR_ANCHOR] },
+  { id: "empty area", name: "Empty Area", x: 100, y: 40, w: 450, h: 300, path: [[170, 280], [170, 320], [210, 320]] },
 ];
+
+
 // B Block Room Data
 const bBlockEntrance = { x: 150, y: 300 };
 
@@ -793,10 +815,35 @@ const bBlockFourthRooms = [
 
 // Placeholder: The actual entrance coordinates for C Block are not known.
 const cBlockEntrance = { x: 400, y: 300 }; // Assuming a corner entrance for layout
+
 const cBlockGroundRooms = [
-  { id: "staff_room", name: "TYL Staffroom", x: 520, y: 50, w: 80, h: 120, path: [[400, 280], [400, 160], [560, 160],] },
-  { id: "math_lab", name: "Math Lab", x: 50, y: 50, w: 100, h: 60, path: [[400, 280], [400, 230], [100, 230], [100, 115]] },
+  // Left Wing (L-shaped)
+  { id: "president", name: "PRESIDENT ROOM", x: 10, y: 50, w: 100, h: 65, path: [[320, 150], [320, 130], [150, 130], [150, 90], [120, 90]] },
+  { id: "tyl_staffroom", name: "TYL STAFFROOM", x: 10, y: 125, w: 100, h: 65, path: [[320, 150], [320, 130], [150, 130], [150, 160], [120, 160]] },
+  { id: "councellor", name: "COUNCELLOR ROOM", x: 10, y: 200, w: 100, h: 65, path: [[320, 150], [320, 130], [150, 130], [150, 230], [120, 230]] },
+  { id: "stair1", name: "Stairs ", x: 10, y: 275, w: 100, h: 50, path: [[110, 300], [130, 300], [130, 320], [80, 320]] },
+  { id: "exam", name: "EXAM", x: 10, y: 335, w: 100, h: 65, path: [[320, 150], [320, 130], [150, 130], [150, 370], [120, 370]] },
+
+
+  // Central Labs
+
+  { id: "lh003", name: "LH-003", x: 170, y: 155, w: 100, h: 110, path: [[320, 150], [320, 130], [220, 130], [220, 150]] },
+  { id: "medio", name: "MEDICAL ROOM", x: 170, y: 320, w: 100, h: 80, path: [[320, 150], [320, 130], [150, 130], [150, 370], [170, 370]] },
+
+  // Top Row (Lecture Halls & Offices)
+  { id: "math_lab", name: " MATH LAB 1&2", x: 170, y: 50, w: 100, h: 60, path: [[320, 150], [320, 130], [220, 130], [220, 120]] },
+  { id: "rest_rooms_t1", name: "Washroom", x: 280, y: 50, w: 80, h: 60, path: [[320, 120], [320, 150]] },
+  { id: "lh001", name: "LH-001", x: 370, y: 50, w: 100, h: 60, path: [[320, 150], [320, 130], [420, 130], [420, 120]] },
+  { id: "hospitality", name: "HOSPITALITY", x: 480, y: 50, w: 265, h: 60, path: [[655, 120], [655, 135], [320, 135], [320, 150]] },
+  { id: "stair2", name: "Stairs ", x: 755, y: 50, w: 50, h: 60, path: [[795, 110], [795, 130], [775, 130], [775, 80]] },
+
+  // Middle Row (Lecture Halls & Library)
+  { id: "stair3", name: "Stairs ", x: 280, y: 155, w: 70, h: 100, path: [[320, 150], [320, 130], [350, 130], [350, 200]] },
+  { id: "lh002", name: "LH-002", x: 360, y: 155, w: 90, h: 60, path: [[320, 150], [320, 130], [400, 130], [400, 150]] },
+
+  // Bottom Store Rooms
 ];
+
 const cBlockFirstRooms = [
   // Left Wing (L-shaped)
   { id: "lh106", name: "LH-106", x: 10, y: 50, w: 100, h: 65, path: [[320, 150], [320, 130], [150, 130], [150, 90], [120, 90]] },
@@ -1052,297 +1099,298 @@ const canteenSecondRooms = [
 
 ];
 
-const allSearchableRooms = [
-  // ------------------------------------
-  // --- A BLOCK ROOMS  ---
-  // ------------------------------------
-  // A Block – Basement
+// const allSearchableRooms = [
 
-  // Ground Floor
+//   // ------------------------------------
+//   // --- A BLOCK ROOMS  ---
+//   // ------------------------------------
+//   // A Block – Basement
 
-  // First Floor
+//   // Ground Floor
 
-  // Second Floor
+//   // First Floor
 
-  // Third Floor
+//   // Second Floor
 
-  // Fourth Floor
+//   // Third Floor
 
-  // Fifth Floor
+//   // Fourth Floor
 
-
-  // ------------------------------------
-  // --- B BLOCK ROOMS  ---
-  // ------------------------------------
-
-  // B Block – Basement
-  { name: "CPL-2 (B Block)", floor: "bblock-basement", roomId: "cpl_2" },
-  { name: "CPL-3 (B Block)", floor: "bblock-basement", roomId: "cpl_3" },
-  { name: "CAED L-3 (B Block)", floor: "bblock-basement", roomId: "caed_3" },
-  { name: "CPL-1 (B Block)", floor: "bblock-basement", roomId: "cpl_1" },
-  { name: "CAED L-2 (B Block)", floor: "bblock-basement", roomId: "caed_2" },
-  { name: "CAED L-1 (B Block)", floor: "bblock-basement", roomId: "caed_1" },
-  { name: "Store (B Block)", floor: "bblock-basement", roomId: "store_1" },
-  { name: "Examination Center (B Block)", floor: "bblock-basement", roomId: "store_2" },
-  { name: "Lift (B Block)", floor: "bblock-basement", roomId: "lift" },
-  { name: "TYL Skill (B Block)", floor: "bblock-basement", roomId: "tyl_skill" },
-  { name: "Makerspace (B Block)", floor: "bblock-basement", roomId: "makerspace" },
-  { name: "Stairs (B Block)", floor: "bblock-basement", roomId: "stair1" },
-  // Ground Floor
-  { name: "Reception (B Block)", floor: "bblock-ground", roomId: "reception" },
-  { name: "Placement Cell (B Block)", floor: "bblock-ground", roomId: "placement_cell" },
-  { name: "Administrative Office (B Block)", floor: "bblock-ground", roomId: "admin_office" },
-  { name: "Board Room (B Block)", floor: "bblock-ground", roomId: "board_room" },
-  { name: "Principal's Chamber (B Block)", floor: "bblock-ground", roomId: "principal_chamber" },
-  { name: "Vice Principal's Chamber (B Block)", floor: "bblock-ground", roomId: "vice_principal" },
-  { name: "Chairman's Chamber (B Block)", floor: "bblock-ground", roomId: "chairman" },
-  { name: "CEO's Chamber (B Block)", floor: "bblock-ground", roomId: "ceo" },
-  { name: "Lift (B Block)", floor: "bblock-ground", roomId: "lift" },
-  { name: "Stairs (B Block)", floor: "bblock-ground", roomId: "stair1" },
-  // First Floor
-  { name: "BS-101 (B Block)", floor: "bblock-first", roomId: "bs101" },
-  { name: "BS-102 (B Block)", floor: "bblock-first", roomId: "bs102" },
-  { name: "BS-103 (B Block)", floor: "bblock-first", roomId: "bs103" },
-  { name: "BS-104 (B Block)", floor: "bblock-first", roomId: "bs104" },
-  { name: "BS-105 (B Block)", floor: "bblock-first", roomId: "bs105" },
-  { name: "BS-106 (B Block)", floor: "bblock-first", roomId: "bs106" },
-  { name: "Washroom (B Block)", floor: "bblock-first", roomId: "washroom_l" },
-  { name: "Lift (B Block)", floor: "bblock-first", roomId: "lift" },
-  { name: "Stairs (B Block)", floor: "bblock-first", roomId: "stair1" },
-  // Second Floor
-  { name: "Chemistry Lab I (B Block)", floor: "bblock-second", roomId: "chem1" },
-  { name: "Chemistry Lab II (B Block)", floor: "bblock-second", roomId: "chem2" },
-  { name: "Physics Lab I (B Block)", floor: "bblock-second", roomId: "phy1" },
-  { name: "Physics Lab II (B Block)", floor: "bblock-second", roomId: "phy2" },
-  { name: "HOD Cabin (B Block)", floor: "bblock-second", roomId: "hod_cabin" },
-  { name: "Library (B Block)", floor: "bblock-second", roomId: "library" },
-  { name: "Washroom (B Block)", floor: "bblock-second", roomId: "washroom_l" },
-  { name: "Lift (B Block)", floor: "bblock-second", roomId: "lift" },
-  { name: "Stairs (B Block)", floor: "bblock-second", roomId: "stair1" },
-  // Third Floor
-  { name: "BS-301 (B Block)", floor: "bblock-third", roomId: "bs301" },
-  { name: "BS-302 (B Block)", floor: "bblock-third", roomId: "bs302" },
-  { name: "BS-303 (B Block)", floor: "bblock-third", roomId: "bs303" },
-  { name: "BS-304 (B Block)", floor: "bblock-third", roomId: "bs304" },
-  { name: "BS-305 (B Block)", floor: "bblock-third", roomId: "bs305" },
-  { name: "BS-306 (B Block)", floor: "bblock-third", roomId: "bs306" },
-  { name: "Dwani (B Block)", floor: "bblock-third", roomId: "dwani1" },
-  { name: "Lift (B Block)", floor: "bblock-third", roomId: "lift" },
-  { name: "Stairs (B Block)", floor: "bblock-third", roomId: "stair1" },
-  // Fourth Floor
-  { name: "Staff Room (B Block)", floor: "bblock-fourth", roomId: "staff_room" },
-  { name: "Basic Science Research Centre (B Block)", floor: "bblock-fourth", roomId: "basic_science" },
-  { name: "BS-403 (B Block)", floor: "bblock-fourth", roomId: "bs403" },
-  { name: "BS-404 (B Block)", floor: "bblock-fourth", roomId: "bs404" },
-  { name: "BS-405 (B Block)", floor: "bblock-fourth", roomId: "bs405" },
-  { name: "Dwani (B Block)", floor: "bblock-fourth", roomId: "dwani2" },
-  { name: "Lift (B Block)", floor: "bblock-fourth", roomId: "lift" },
-  { name: "Stairs (B Block)", floor: "bblock-fourth", roomId: "stair1" },
-
-  // ------------------------------------
-  // --- D BLOCK ROOMS (ORIGINAL) ---
-  // ------------------------------------
-
-  // Ground Floor
-  { name: "Washroom (D Block)", floor: "dblock-ground", roomId: "washroom" },
-  { name: "AV Hall (D Block)", floor: "dblock-ground", roomId: "avhall" },
-  { name: "Stairs  (D Block)", floor: "dblock-ground", roomId: "stairs" },
-  { name: "DL-001", floor: "dblock-ground", roomId: "dl001" },
-  { name: "DL-002", floor: "dblock-ground", roomId: "dl002" },
-  { name: "DL-003", floor: "dblock-ground", roomId: "dl003" },
-  { name: "DL-005", floor: "dblock-ground", roomId: "dl005" }, // Added DL-005 from the map data
-  { name: "Meeting Room (D Block)", floor: "dblock-ground", roomId: "meeting" },
-  { name: "DL-004", floor: "dblock-ground", roomId: "dl004" },
-
-  // First Floor
-  { name: "Washroom (D Block First)", floor: "dblock-first", roomId: "washroom1" },
-  { name: "AV Hall (D Block First)", floor: "dblock-first", roomId: "avhall1" },
-  { name: "Meeting Room (D Block First)", floor: "dblock-first", roomId: "meeting1" },
-  { name: "AIML Staffroom", floor: "dblock-first", roomId: "aimlstaff" },
-  { name: "AIML HOD Cabin", floor: "dblock-first", roomId: "aimlhod" }, // Added from the map data
-  { name: "Stairs  (D Block First)", floor: "dblock-first", roomId: "stairs1" }, // Added from the map data
-
-  // Second Floor
-  { name: "ME 201", floor: "dblock-second", roomId: "me201" },
-  { name: "ME 202", floor: "dblock-second", roomId: "me202" },
-  { name: "ME 203", floor: "dblock-second", roomId: "me203" },
-  { name: "ME 204", floor: "dblock-second", roomId: "me204" },
-  { name: "ME 205", floor: "dblock-second", roomId: "me205" },
-  { name: "Innovation & Entrepreneurship Cell", floor: "dblock-second", roomId: "innovation" },
-  { name: "Stairs  (D Block Second)", floor: "dblock-second", roomId: "stairs2" },
-  { name: "AV Hall (D Block Second)", floor: "dblock-second", roomId: "avhall" },
-  { name: "Washroom (D Block Second)", floor: "dblock-second", roomId: "washroom" },
-
-  // Third Floor
-  { name: "CV 301", floor: "dblock-third", roomId: "cv301" },
-  { name: "CV 302", floor: "dblock-third", roomId: "cv302" },
-  { name: "CV 303", floor: "dblock-third", roomId: "cv303" },
-  { name: "AIDS Staffroom", floor: "dblock-third", roomId: "aidsstaffroom" },
-  { name: "Stairs  (D Block Third)", floor: "dblock-third", roomId: "stairs3" },
-  { name: "AV Hall (D Block Third)", floor: "dblock-third", roomId: "avhall" },
-  { name: "Washroom (D Block Third)", floor: "dblock-third", roomId: "washroom" },
-
-  // Fourth Floor
-  { name: "CV 400", floor: "dblock-fourth", roomId: "cv400" },
-  { name: "CV 401", floor: "dblock-fourth", roomId: "cv401" },
-  { name: "CV 402", floor: "dblock-fourth", roomId: "cv402" },
-  { name: "CV 403", floor: "dblock-fourth", roomId: "cv403" },
-  { name: "CV 404", floor: "dblock-fourth", roomId: "cv404" },
-  { name: "Image and Video Analytics Cell", floor: "dblock-fourth", roomId: "imagecell" },
-  { name: "Stairs  (D Block Fourth)", floor: "dblock-fourth", roomId: "stairs4" },
-  { name: "AV Hall (D Block Fourth)", floor: "dblock-fourth", roomId: "avhall" },
-  { name: "Washroom (D Block Fourth)", floor: "dblock-fourth", roomId: "washroom" },
+//   // Fifth Floor
 
 
-  // ------------------------------------
-  // --- C BLOCK ROOMS (NEW) ---
-  // ------------------------------------
+//   // ------------------------------------
+//   // --- B BLOCK ROOMS  ---
+//   // ------------------------------------
 
-  // Ground Floor: (BLANK)
-  { name: "TYL Staffroom (C Block)", floor: "cblock-ground", roomId: "staff_room" },
-  { name: "Math Lab(C Block)", floor: "cblock-ground", roomId: "math_lab" },
+//   // B Block – Basement
+//   { name: "CPL-2 (B Block)", floor: "bblock-basement", roomId: "cpl_2" },
+//   { name: "CPL-3 (B Block)", floor: "bblock-basement", roomId: "cpl_3" },
+//   { name: "CAED L-3 (B Block)", floor: "bblock-basement", roomId: "caed_3" },
+//   { name: "CPL-1 (B Block)", floor: "bblock-basement", roomId: "cpl_1" },
+//   { name: "CAED L-2 (B Block)", floor: "bblock-basement", roomId: "caed_2" },
+//   { name: "CAED L-1 (B Block)", floor: "bblock-basement", roomId: "caed_1" },
+//   { name: "Store (B Block)", floor: "bblock-basement", roomId: "store_1" },
+//   { name: "Examination Center (B Block)", floor: "bblock-basement", roomId: "store_2" },
+//   { name: "Lift (B Block)", floor: "bblock-basement", roomId: "lift" },
+//   { name: "TYL Skill (B Block)", floor: "bblock-basement", roomId: "tyl_skill" },
+//   { name: "Makerspace (B Block)", floor: "bblock-basement", roomId: "makerspace" },
+//   { name: "Stairs (B Block)", floor: "bblock-basement", roomId: "stair1" },
+//   // Ground Floor
+//   { name: "Reception (B Block)", floor: "bblock-ground", roomId: "reception" },
+//   { name: "Placement Cell (B Block)", floor: "bblock-ground", roomId: "placement_cell" },
+//   { name: "Administrative Office (B Block)", floor: "bblock-ground", roomId: "admin_office" },
+//   { name: "Board Room (B Block)", floor: "bblock-ground", roomId: "board_room" },
+//   { name: "Principal's Chamber (B Block)", floor: "bblock-ground", roomId: "principal_chamber" },
+//   { name: "Vice Principal's Chamber (B Block)", floor: "bblock-ground", roomId: "vice_principal" },
+//   { name: "Chairman's Chamber (B Block)", floor: "bblock-ground", roomId: "chairman" },
+//   { name: "CEO's Chamber (B Block)", floor: "bblock-ground", roomId: "ceo" },
+//   { name: "Lift (B Block)", floor: "bblock-ground", roomId: "lift" },
+//   { name: "Stairs (B Block)", floor: "bblock-ground", roomId: "stair1" },
+//   // First Floor
+//   { name: "BS-101 (B Block)", floor: "bblock-first", roomId: "bs101" },
+//   { name: "BS-102 (B Block)", floor: "bblock-first", roomId: "bs102" },
+//   { name: "BS-103 (B Block)", floor: "bblock-first", roomId: "bs103" },
+//   { name: "BS-104 (B Block)", floor: "bblock-first", roomId: "bs104" },
+//   { name: "BS-105 (B Block)", floor: "bblock-first", roomId: "bs105" },
+//   { name: "BS-106 (B Block)", floor: "bblock-first", roomId: "bs106" },
+//   { name: "Washroom (B Block)", floor: "bblock-first", roomId: "washroom_l" },
+//   { name: "Lift (B Block)", floor: "bblock-first", roomId: "lift" },
+//   { name: "Stairs (B Block)", floor: "bblock-first", roomId: "stair1" },
+//   // Second Floor
+//   { name: "Chemistry Lab I (B Block)", floor: "bblock-second", roomId: "chem1" },
+//   { name: "Chemistry Lab II (B Block)", floor: "bblock-second", roomId: "chem2" },
+//   { name: "Physics Lab I (B Block)", floor: "bblock-second", roomId: "phy1" },
+//   { name: "Physics Lab II (B Block)", floor: "bblock-second", roomId: "phy2" },
+//   { name: "HOD Cabin (B Block)", floor: "bblock-second", roomId: "hod_cabin" },
+//   { name: "Library (B Block)", floor: "bblock-second", roomId: "library" },
+//   { name: "Washroom (B Block)", floor: "bblock-second", roomId: "washroom_l" },
+//   { name: "Lift (B Block)", floor: "bblock-second", roomId: "lift" },
+//   { name: "Stairs (B Block)", floor: "bblock-second", roomId: "stair1" },
+//   // Third Floor
+//   { name: "BS-301 (B Block)", floor: "bblock-third", roomId: "bs301" },
+//   { name: "BS-302 (B Block)", floor: "bblock-third", roomId: "bs302" },
+//   { name: "BS-303 (B Block)", floor: "bblock-third", roomId: "bs303" },
+//   { name: "BS-304 (B Block)", floor: "bblock-third", roomId: "bs304" },
+//   { name: "BS-305 (B Block)", floor: "bblock-third", roomId: "bs305" },
+//   { name: "BS-306 (B Block)", floor: "bblock-third", roomId: "bs306" },
+//   { name: "Dwani (B Block)", floor: "bblock-third", roomId: "dwani1" },
+//   { name: "Lift (B Block)", floor: "bblock-third", roomId: "lift" },
+//   { name: "Stairs (B Block)", floor: "bblock-third", roomId: "stair1" },
+//   // Fourth Floor
+//   { name: "Staff Room (B Block)", floor: "bblock-fourth", roomId: "staff_room" },
+//   { name: "Basic Science Research Centre (B Block)", floor: "bblock-fourth", roomId: "basic_science" },
+//   { name: "BS-403 (B Block)", floor: "bblock-fourth", roomId: "bs403" },
+//   { name: "BS-404 (B Block)", floor: "bblock-fourth", roomId: "bs404" },
+//   { name: "BS-405 (B Block)", floor: "bblock-fourth", roomId: "bs405" },
+//   { name: "Dwani (B Block)", floor: "bblock-fourth", roomId: "dwani2" },
+//   { name: "Lift (B Block)", floor: "bblock-fourth", roomId: "lift" },
+//   { name: "Stairs (B Block)", floor: "bblock-fourth", roomId: "stair1" },
 
-  // 1ST FLOOR (EEE)
-  { name: "LH-106 (C Block)", floor: "cblock-first", roomId: "lh106" },
-  { name: "PSS/MC LAB (C Block)", floor: "cblock-first", roomId: "pssmc_lab" },
-  { name: "LD/CAED LAB (C Block)", floor: "cblock-first", roomId: "ldcaed_lab" },
-  { name: "SERVER ROOM (C Block)", floor: "cblock-first", roomId: "server_room" },
-  { name: "CSM/CS LAB (C Block)", floor: "cblock-first", roomId: "csmcs_lab" },
-  { name: "DCM/TIM Lab (Machines Lab)", floor: "cblock-first", roomId: "dcmtim_lab" },
-  { name: "AEC/EC LAB (C Block)", floor: "cblock-first", roomId: "aecelec_lab" },
-  { name: "LH-105 (C Block)", floor: "cblock-first", roomId: "lh105" },
-  { name: "HOD Office AND FACULTY HALL (C Block)", floor: "cblock-first", roomId: "hod_office_hall" },
-  { name: "LH-104 (C Block)", floor: "cblock-first", roomId: "lh104" },
-  { name: "LH-103 (C Block)", floor: "cblock-first", roomId: "lh103" },
-  { name: "LH-102 (C Block)", floor: "cblock-first", roomId: "lh102" },
-  { name: "LH-101 (C Block)", floor: "cblock-first", roomId: "lh101" },
-  { name: "DEPT LIBRARY (C Block First)", floor: "cblock-first", roomId: "dept_library_1" },
-  { name: "STUDENT LOUNGE (C Block First)", floor: "cblock-first", roomId: "student_lounge_1" },
-  { name: "Washroom (C Block 1st Fl)", floor: "cblock-first", roomId: "rest_rooms_t1" },
-  { name: "Stairs (C Block 1st L-Side)", floor: "cblock-first", roomId: "stair1" },
-  { name: "Stairs(C Block 1st R-Side)", floor: "cblock-first", roomId: "stair2" },
-  { name: "Stairs(C Block 1st center)", floor: "cblock-first", roomId: "stair3" },
+//   // ------------------------------------
+//   // --- D BLOCK ROOMS (ORIGINAL) ---
+//   // ------------------------------------
+
+//   // Ground Floor
+//   { name: "Washroom (D Block)", floor: "dblock-ground", roomId: "washroom" },
+//   { name: "AV Hall (D Block)", floor: "dblock-ground", roomId: "avhall" },
+//   { name: "Stairs  (D Block)", floor: "dblock-ground", roomId: "stairs" },
+//   { name: "DL-001", floor: "dblock-ground", roomId: "dl001" },
+//   { name: "DL-002", floor: "dblock-ground", roomId: "dl002" },
+//   { name: "DL-003", floor: "dblock-ground", roomId: "dl003" },
+//   { name: "DL-005", floor: "dblock-ground", roomId: "dl005" }, // Added DL-005 from the map data
+//   { name: "Meeting Room (D Block)", floor: "dblock-ground", roomId: "meeting" },
+//   { name: "DL-004", floor: "dblock-ground", roomId: "dl004" },
+
+//   // First Floor
+//   { name: "Washroom (D Block First)", floor: "dblock-first", roomId: "washroom1" },
+//   { name: "AV Hall (D Block First)", floor: "dblock-first", roomId: "avhall1" },
+//   { name: "Meeting Room (D Block First)", floor: "dblock-first", roomId: "meeting1" },
+//   { name: "AIML Staffroom", floor: "dblock-first", roomId: "aimlstaff" },
+//   { name: "AIML HOD Cabin", floor: "dblock-first", roomId: "aimlhod" }, // Added from the map data
+//   { name: "Stairs  (D Block First)", floor: "dblock-first", roomId: "stairs1" }, // Added from the map data
+
+//   // Second Floor
+//   { name: "ME 201", floor: "dblock-second", roomId: "me201" },
+//   { name: "ME 202", floor: "dblock-second", roomId: "me202" },
+//   { name: "ME 203", floor: "dblock-second", roomId: "me203" },
+//   { name: "ME 204", floor: "dblock-second", roomId: "me204" },
+//   { name: "ME 205", floor: "dblock-second", roomId: "me205" },
+//   { name: "Innovation & Entrepreneurship Cell", floor: "dblock-second", roomId: "innovation" },
+//   { name: "Stairs  (D Block Second)", floor: "dblock-second", roomId: "stairs2" },
+//   { name: "AV Hall (D Block Second)", floor: "dblock-second", roomId: "avhall" },
+//   { name: "Washroom (D Block Second)", floor: "dblock-second", roomId: "washroom" },
+
+//   // Third Floor
+//   { name: "CV 301", floor: "dblock-third", roomId: "cv301" },
+//   { name: "CV 302", floor: "dblock-third", roomId: "cv302" },
+//   { name: "CV 303", floor: "dblock-third", roomId: "cv303" },
+//   { name: "AIDS Staffroom", floor: "dblock-third", roomId: "aidsstaffroom" },
+//   { name: "Stairs  (D Block Third)", floor: "dblock-third", roomId: "stairs3" },
+//   { name: "AV Hall (D Block Third)", floor: "dblock-third", roomId: "avhall" },
+//   { name: "Washroom (D Block Third)", floor: "dblock-third", roomId: "washroom" },
+
+//   // Fourth Floor
+//   { name: "CV 400", floor: "dblock-fourth", roomId: "cv400" },
+//   { name: "CV 401", floor: "dblock-fourth", roomId: "cv401" },
+//   { name: "CV 402", floor: "dblock-fourth", roomId: "cv402" },
+//   { name: "CV 403", floor: "dblock-fourth", roomId: "cv403" },
+//   { name: "CV 404", floor: "dblock-fourth", roomId: "cv404" },
+//   { name: "Image and Video Analytics Cell", floor: "dblock-fourth", roomId: "imagecell" },
+//   { name: "Stairs  (D Block Fourth)", floor: "dblock-fourth", roomId: "stairs4" },
+//   { name: "AV Hall (D Block Fourth)", floor: "dblock-fourth", roomId: "avhall" },
+//   { name: "Washroom (D Block Fourth)", floor: "dblock-fourth", roomId: "washroom" },
 
 
-  // 2ND FLOOR (ISE)
-  { name: "LH-207 (C Block)", floor: "cblock-second", roomId: "lh207" },
-  { name: "L-208 (Database Applications Lab)", floor: "cblock-second", roomId: "l208" },
-  { name: "L-209 (System Software & Operating System Lab)", floor: "cblock-second", roomId: "l209" },
-  { name: "L-210 (Web Programming Lab)", floor: "cblock-second", roomId: "l210" },
-  { name: "L-211 (Networks Lab / File Structures Lab)", floor: "cblock-second", roomId: "l211_b" },
-  { name: "L-213 (Web Programming Lab / Project Lab)", floor: "cblock-second", roomId: "l213" },
-  { name: "L-212 (Analog & Digital Electronics Lab)", floor: "cblock-second", roomId: "l212" },
-  { name: "LH-206 (C Block)", floor: "cblock-second", roomId: "lh206" },
-  { name: "Washroom (C Block Second)", floor: "cblock-second", roomId: "washroom_2" },
-  { name: "LH-205 (C Block)", floor: "cblock-second", roomId: "lh205" },
-  { name: "STAFF TOILET (C Block Second)", floor: "cblock-second", roomId: "staff_toilet" },
-  { name: "STAFF ROOM (C Block Second)", floor: "cblock-second", roomId: "staff_room_2" },
-  { name: "LH-204 (C Block)", floor: "cblock-second", roomId: "lh204" },
-  { name: "LH-203 (C Block)", floor: "cblock-second", roomId: "lh203" },
-  { name: "LH-202 (C Block)", floor: "cblock-second", roomId: "lh202" },
-  { name: "LH-201 (B.E Lecture Hall)", floor: "cblock-second", roomId: "lh201" },
-  { name: "DEPT LIBRARY (C Block Second)", floor: "cblock-second", roomId: "dept_library_2" },
-  { name: "Stairs (C Block 2nd L-Side)", floor: "cblock-second", roomId: "stair4" },
-  { name: "Stairs (C Block 2nd R-Side)", floor: "cblock-second", roomId: "stair5" },
-  { name: "Stairs(C Block 2nd center)", floor: "cblock-first", roomId: "stair6" },
+//   // ------------------------------------
+//   // --- C BLOCK ROOMS (NEW) ---
+//   // ------------------------------------
+
+//   // Ground Floor: (BLANK)
+//   { name: "TYL Staffroom (C Block)", floor: "cblock-ground", roomId: "staff_room" },
+//   { name: "Math Lab(C Block)", floor: "cblock-ground", roomId: "math_lab" },
+
+//   // 1ST FLOOR (EEE)
+//   { name: "LH-106 (C Block)", floor: "cblock-first", roomId: "lh106" },
+//   { name: "PSS/MC LAB (C Block)", floor: "cblock-first", roomId: "pssmc_lab" },
+//   { name: "LD/CAED LAB (C Block)", floor: "cblock-first", roomId: "ldcaed_lab" },
+//   { name: "SERVER ROOM (C Block)", floor: "cblock-first", roomId: "server_room" },
+//   { name: "CSM/CS LAB (C Block)", floor: "cblock-first", roomId: "csmcs_lab" },
+//   { name: "DCM/TIM Lab (Machines Lab)", floor: "cblock-first", roomId: "dcmtim_lab" },
+//   { name: "AEC/EC LAB (C Block)", floor: "cblock-first", roomId: "aecelec_lab" },
+//   { name: "LH-105 (C Block)", floor: "cblock-first", roomId: "lh105" },
+//   { name: "HOD Office AND FACULTY HALL (C Block)", floor: "cblock-first", roomId: "hod_office_hall" },
+//   { name: "LH-104 (C Block)", floor: "cblock-first", roomId: "lh104" },
+//   { name: "LH-103 (C Block)", floor: "cblock-first", roomId: "lh103" },
+//   { name: "LH-102 (C Block)", floor: "cblock-first", roomId: "lh102" },
+//   { name: "LH-101 (C Block)", floor: "cblock-first", roomId: "lh101" },
+//   { name: "DEPT LIBRARY (C Block First)", floor: "cblock-first", roomId: "dept_library_1" },
+//   { name: "STUDENT LOUNGE (C Block First)", floor: "cblock-first", roomId: "student_lounge_1" },
+//   { name: "Washroom (C Block 1st Fl)", floor: "cblock-first", roomId: "rest_rooms_t1" },
+//   { name: "Stairs (C Block 1st L-Side)", floor: "cblock-first", roomId: "stair1" },
+//   { name: "Stairs(C Block 1st R-Side)", floor: "cblock-first", roomId: "stair2" },
+//   { name: "Stairs(C Block 1st center)", floor: "cblock-first", roomId: "stair3" },
 
 
-  // 3RD FLOOR (ECE)
-  { name: "M.Tech L-307 (C Block)", floor: "cblock-third", roomId: "mtech_l307" },
-  { name: "M.Tech L-308 (C Block)", floor: "cblock-third", roomId: "mtech_l308" },
-  { name: "L-303 VLSI LAB/MP LAB (C Block)", floor: "cblock-third", roomId: "vlsi_l303" },
-  { name: "L-302 HDL LAB/DSP LAB (C Block)", floor: "cblock-third", roomId: "hdl_l302" },
-  { name: "L-301 Comm And Adv Comm. Lab (C Block)", floor: "cblock-third", roomId: "comm_l301" },
-  { name: "DE / MC Lab (L-307) (C Block)", floor: "cblock-third", roomId: "de_l307" },
-  { name: "L-306 AEC Lab (C Block)", floor: "cblock-third", roomId: "aec_l306" },
-  { name: "L-305 Project Lab (C Block)", floor: "cblock-third", roomId: "proj_l305" },
-  { name: "L-304 PE Lab (C Block)", floor: "cblock-third", roomId: "pe_l304" },
-  { name: "LH-306 (C Block)", floor: "cblock-third", roomId: "lh306" },
-  { name: "LH-305 (C Block)", floor: "cblock-third", roomId: "lh305" },
-  { name: "HOD Office AND FACULTY HALL (C Block Third)", floor: "cblock-third", roomId: "hod_office_hall_3" },
-  { name: "LH-304 (C Block)", floor: "cblock-third", roomId: "lh304" },
-  { name: "LH-303 (C Block)", floor: "cblock-third", roomId: "lh303" },
-  { name: "LH-302 (C Block)", floor: "cblock-third", roomId: "lh302" },
-  { name: "LH-301 (C Block)", floor: "cblock-third", roomId: "lh301" },
-  { name: "DEPT LIBRARY (C Block Third)", floor: "cblock-third", roomId: "dept_library_3" },
-  { name: "STUDENT LOUNGE (C Block Third)", floor: "cblock-third", roomId: "student_lounge_3" },
-  { name: "Washroom (C Block 3rd Fl)", floor: "cblock-third", roomId: "rest_rooms_3a" },
-  { name: "Stairs (C Block 3rd L-Side)", floor: "cblock-third", roomId: "stair7" },
-  { name: "Stairs (C Block 3rd R-Side)", floor: "cblock-third", roomId: "stair8" },
-  { name: "Stairs (C Block 3rd center)", floor: "cblock-third", roomId: "stair9" },
+//   // 2ND FLOOR (ISE)
+//   { name: "LH-207 (C Block)", floor: "cblock-second", roomId: "lh207" },
+//   { name: "L-208 (Database Applications Lab)", floor: "cblock-second", roomId: "l208" },
+//   { name: "L-209 (System Software & Operating System Lab)", floor: "cblock-second", roomId: "l209" },
+//   { name: "L-210 (Web Programming Lab)", floor: "cblock-second", roomId: "l210" },
+//   { name: "L-211 (Networks Lab / File Structures Lab)", floor: "cblock-second", roomId: "l211_b" },
+//   { name: "L-213 (Web Programming Lab / Project Lab)", floor: "cblock-second", roomId: "l213" },
+//   { name: "L-212 (Analog & Digital Electronics Lab)", floor: "cblock-second", roomId: "l212" },
+//   { name: "LH-206 (C Block)", floor: "cblock-second", roomId: "lh206" },
+//   { name: "Washroom (C Block Second)", floor: "cblock-second", roomId: "washroom_2" },
+//   { name: "LH-205 (C Block)", floor: "cblock-second", roomId: "lh205" },
+//   { name: "STAFF TOILET (C Block Second)", floor: "cblock-second", roomId: "staff_toilet" },
+//   { name: "STAFF ROOM (C Block Second)", floor: "cblock-second", roomId: "staff_room_2" },
+//   { name: "LH-204 (C Block)", floor: "cblock-second", roomId: "lh204" },
+//   { name: "LH-203 (C Block)", floor: "cblock-second", roomId: "lh203" },
+//   { name: "LH-202 (C Block)", floor: "cblock-second", roomId: "lh202" },
+//   { name: "LH-201 (B.E Lecture Hall)", floor: "cblock-second", roomId: "lh201" },
+//   { name: "DEPT LIBRARY (C Block Second)", floor: "cblock-second", roomId: "dept_library_2" },
+//   { name: "Stairs (C Block 2nd L-Side)", floor: "cblock-second", roomId: "stair4" },
+//   { name: "Stairs (C Block 2nd R-Side)", floor: "cblock-second", roomId: "stair5" },
+//   { name: "Stairs(C Block 2nd center)", floor: "cblock-second", roomId: "stair6" },
 
 
-  // 4TH FLOOR (Mixed)
-  { name: "LH-407a (C Block)", floor: "cblock-fourth", roomId: "lh407a" },
-  { name: "LH-407b (C Block)", floor: "cblock-fourth", roomId: "lh407b" },
-  { name: "LAB-408 (Microcontroller/CCN Lab)", floor: "cblock-fourth", roomId: "lab408" },
-  { name: "LAB-409 (HDL/DSP/Microprocessor)", floor: "cblock-fourth", roomId: "lab409" },
-  { name: "LAB-410 (Analog Electronics/Microwave)", floor: "cblock-fourth", roomId: "lab410" },
-  { name: "LH-406 (C Block)", floor: "cblock-fourth", roomId: "lh406" },
-  { name: "LAB-413 (Analog Comm. & IIC Lab)", floor: "cblock-fourth", roomId: "lab413" },
-  { name: "LAB-412b (Project & Research Lab)", floor: "cblock-fourth", roomId: "lab412b" },
-  { name: "LAB-412a (AI/Tech Computer Lab)", floor: "cblock-fourth", roomId: "lab412a" },
-  { name: "LAB-411 (Logic Design Lab)", floor: "cblock-fourth", roomId: "lab411" },
-  { name: "LH-405 (C Block)", floor: "cblock-fourth", roomId: "lh405" },
-  { name: "Faculty Hall (C Block Fourth)", floor: "cblock-fourth", roomId: "faculty_hall_4" },
-  { name: "LH-404 (C Block)", floor: "cblock-fourth", roomId: "lh404" },
-  { name: "LH-403 (C Block)", floor: "cblock-fourth", roomId: "lh403" },
-  { name: "LH-402 (C Block)", floor: "cblock-fourth", roomId: "lh402" },
-  { name: "LH-401 (C Block)", floor: "cblock-fourth", roomId: "lh401" },
-  { name: "DEPT. LIBRARY (C Block Fourth)", floor: "cblock-fourth", roomId: "dept_library_4" },
-  { name: "Student Lounge (C Block Fourth)", floor: "cblock-fourth", roomId: "student_lounge_4" },
-  { name: "Rest Room (C Block Fourth)", floor: "cblock-fourth", roomId: "rest_room_4" },
-  { name: "Faclty Res. Room (C Block Fourth)", floor: "cblock-fourth", roomId: "faculty_rest_room" },
-  { name: "Stairs (C Block 4th L-Side)", floor: "cblock-fourth", roomId: "stair11" },
-  { name: "Stairs (C Block 4th R-Side)", floor: "cblock-fourth", roomId: "stair10" },
-  { name: "Stairs (C Block 4th center)", floor: "cblock-fourth", roomId: "stair12" },
+//   // 3RD FLOOR (ECE)
+//   { name: "M.Tech L-307 (C Block)", floor: "cblock-third", roomId: "mtech_l307" },
+//   { name: "M.Tech L-308 (C Block)", floor: "cblock-third", roomId: "mtech_l308" },
+//   { name: "L-303 VLSI LAB/MP LAB (C Block)", floor: "cblock-third", roomId: "vlsi_l303" },
+//   { name: "L-302 HDL LAB/DSP LAB (C Block)", floor: "cblock-third", roomId: "hdl_l302" },
+//   { name: "L-301 Comm And Adv Comm. Lab (C Block)", floor: "cblock-third", roomId: "comm_l301" },
+//   { name: "DE / MC Lab (L-307) (C Block)", floor: "cblock-third", roomId: "de_l307" },
+//   { name: "L-306 AEC Lab (C Block)", floor: "cblock-third", roomId: "aec_l306" },
+//   { name: "L-305 Project Lab (C Block)", floor: "cblock-third", roomId: "proj_l305" },
+//   { name: "L-304 PE Lab (C Block)", floor: "cblock-third", roomId: "pe_l304" },
+//   { name: "LH-306 (C Block)", floor: "cblock-third", roomId: "lh306" },
+//   { name: "LH-305 (C Block)", floor: "cblock-third", roomId: "lh305" },
+//   { name: "HOD Office AND FACULTY HALL (C Block Third)", floor: "cblock-third", roomId: "hod_office_hall_3" },
+//   { name: "LH-304 (C Block)", floor: "cblock-third", roomId: "lh304" },
+//   { name: "LH-303 (C Block)", floor: "cblock-third", roomId: "lh303" },
+//   { name: "LH-302 (C Block)", floor: "cblock-third", roomId: "lh302" },
+//   { name: "LH-301 (C Block)", floor: "cblock-third", roomId: "lh301" },
+//   { name: "DEPT LIBRARY (C Block Third)", floor: "cblock-third", roomId: "dept_library_3" },
+//   { name: "STUDENT LOUNGE (C Block Third)", floor: "cblock-third", roomId: "student_lounge_3" },
+//   { name: "Washroom (C Block 3rd Fl)", floor: "cblock-third", roomId: "rest_rooms_3a" },
+//   { name: "Stairs (C Block 3rd L-Side)", floor: "cblock-third", roomId: "stair7" },
+//   { name: "Stairs (C Block 3rd R-Side)", floor: "cblock-third", roomId: "stair8" },
+//   { name: "Stairs (C Block 3rd center)", floor: "cblock-third", roomId: "stair9" },
 
 
-  // 5TH FLOOR (CSE)
-  { name: "LH-506 (C Block)", floor: "cblock-fifth", roomId: "lh506" },
-  { name: "L503 (AI & Machine Learning Lab)", floor: "cblock-fifth", roomId: "l503" },
-  { name: "L502 (Computer Networks Lab)", floor: "cblock-fifth", roomId: "l502" },
-  { name: "L501 (Data Structures Lab)", floor: "cblock-fifth", roomId: "l501" },
-  { name: "LH-505 (C Block)", floor: "cblock-fifth", roomId: "lh505" },
-  { name: "R & D Lab / CoE MI & BD (C Block)", floor: "cblock-fifth", roomId: "r_d_lab" },
-  { name: "L506 (Mobile Application Dev. Lab)", floor: "cblock-fifth", roomId: "l506" },
-  { name: "CoE Cybersecurity (C Block)", floor: "cblock-fifth", roomId: "coe_cybersecurity" },
-  { name: "L504 (Analog & Digital Electronics Lab)", floor: "cblock-fifth", roomId: "l504" },
-  { name: "M.TECH CSE LAB (C Block)", floor: "cblock-fifth", roomId: "mtech_cse_lab" },
-  { name: "STAFF ROOM (C Block Fifth)", floor: "cblock-fifth", roomId: "staff_room_5" },
-  { name: "LH-504 (C Block)", floor: "cblock-fifth", roomId: "lh504" },
-  { name: "LH-503 (C Block)", floor: "cblock-fifth", roomId: "lh503" },
-  { name: "LH-502 (C Block)", floor: "cblock-fifth", roomId: "lh502" },
-  { name: "LH-501 (C Block)", floor: "cblock-fifth", roomId: "lh501" },
-  { name: "DEPT LIBRARY (C Block Fifth)", floor: "cblock-fifth", roomId: "dept_library_5" },
-  { name: "Washroom (C Block Fifth)", floor: "cblock-fifth", roomId: "washroom_5" },
-  { name: "Stairs (C Block 5th L-Side)", floor: "cblock-fifth", roomId: "stair13" },
-  { name: "Stairs (C Block 5th R-Side)", floor: "cblock-fifth", roomId: "stair14" },
-  { name: "Stairs (C Block 5th center)", floor: "cblock-fifth", roomId: "stair15" },
-  // CANTEEN ROOMS
+//   // 4TH FLOOR (Mixed)
+//   { name: "LH-407a (C Block)", floor: "cblock-fourth", roomId: "lh407a" },
+//   { name: "LH-407b (C Block)", floor: "cblock-fourth", roomId: "lh407b" },
+//   { name: "LAB-408 (Microcontroller/CCN Lab)", floor: "cblock-fourth", roomId: "lab408" },
+//   { name: "LAB-409 (HDL/DSP/Microprocessor)", floor: "cblock-fourth", roomId: "lab409" },
+//   { name: "LAB-410 (Analog Electronics/Microwave)", floor: "cblock-fourth", roomId: "lab410" },
+//   { name: "LH-406 (C Block)", floor: "cblock-fourth", roomId: "lh406" },
+//   { name: "LAB-413 (Analog Comm. & IIC Lab)", floor: "cblock-fourth", roomId: "lab413" },
+//   { name: "LAB-412b (Project & Research Lab)", floor: "cblock-fourth", roomId: "lab412b" },
+//   { name: "LAB-412a (AI/Tech Computer Lab)", floor: "cblock-fourth", roomId: "lab412a" },
+//   { name: "LAB-411 (Logic Design Lab)", floor: "cblock-fourth", roomId: "lab411" },
+//   { name: "LH-405 (C Block)", floor: "cblock-fourth", roomId: "lh405" },
+//   { name: "Faculty Hall (C Block Fourth)", floor: "cblock-fourth", roomId: "faculty_hall_4" },
+//   { name: "LH-404 (C Block)", floor: "cblock-fourth", roomId: "lh404" },
+//   { name: "LH-403 (C Block)", floor: "cblock-fourth", roomId: "lh403" },
+//   { name: "LH-402 (C Block)", floor: "cblock-fourth", roomId: "lh402" },
+//   { name: "LH-401 (C Block)", floor: "cblock-fourth", roomId: "lh401" },
+//   { name: "DEPT. LIBRARY (C Block Fourth)", floor: "cblock-fourth", roomId: "dept_library_4" },
+//   { name: "Student Lounge (C Block Fourth)", floor: "cblock-fourth", roomId: "student_lounge_4" },
+//   { name: "Rest Room (C Block Fourth)", floor: "cblock-fourth", roomId: "rest_room_4" },
+//   { name: "Faclty Res. Room (C Block Fourth)", floor: "cblock-fourth", roomId: "faculty_rest_room" },
+//   { name: "Stairs (C Block 4th L-Side)", floor: "cblock-fourth", roomId: "stair11" },
+//   { name: "Stairs (C Block 4th R-Side)", floor: "cblock-fourth", roomId: "stair10" },
+//   { name: "Stairs (C Block 4th center)", floor: "cblock-fourth", roomId: "stair12" },
 
-  // Ground Floor
-  { name: "CAFE CORNER", floor: "canteen-ground", roomId: "cafe_corner" },
-  { name: "Stationary", floor: "canteen-ground", roomId: "xerox" },
-  { name: "Washroom", floor: "canteen-ground", roomId: "washroom" },
-  { name: "PE Staffroom", floor: "canteen-ground", roomId: "pestaffroom" },
-  { name: "TT Court", floor: "canteen-ground", roomId: "ttcourt" },
-  { name: "GYM", floor: "canteen-ground", roomId: "gym" },
-  { name: "Stairs 1", floor: "canteen-ground", roomId: "stairs1" },
-  { name: "Stairs 2", floor: "canteen-ground", roomId: "stairs2" },
 
-  // First Floor
-  { name: "Canteen", floor: "canteen-first", roomId: "canteen" },
-  { name: "Student Seating Area", floor: "canteen-first", roomId: "studentseating" },
-  { name: "Staff Seating Area", floor: "canteen-first", roomId: "staffseating" },
-  { name: "Stairs 3", floor: "canteen-first", roomId: "stair3" },
+//   // 5TH FLOOR (CSE)
+//   { name: "LH-506 (C Block)", floor: "cblock-fifth", roomId: "lh506" },
+//   { name: "L503 (AI & Machine Learning Lab)", floor: "cblock-fifth", roomId: "l503" },
+//   { name: "L502 (Computer Networks Lab)", floor: "cblock-fifth", roomId: "l502" },
+//   { name: "L501 (Data Structures Lab)", floor: "cblock-fifth", roomId: "l501" },
+//   { name: "LH-505 (C Block)", floor: "cblock-fifth", roomId: "lh505" },
+//   { name: "R & D Lab / CoE MI & BD (C Block)", floor: "cblock-fifth", roomId: "r_d_lab" },
+//   { name: "L506 (Mobile Application Dev. Lab)", floor: "cblock-fifth", roomId: "l506" },
+//   { name: "CoE Cybersecurity (C Block)", floor: "cblock-fifth", roomId: "coe_cybersecurity" },
+//   { name: "L504 (Analog & Digital Electronics Lab)", floor: "cblock-fifth", roomId: "l504" },
+//   { name: "M.TECH CSE LAB (C Block)", floor: "cblock-fifth", roomId: "mtech_cse_lab" },
+//   { name: "STAFF ROOM (C Block Fifth)", floor: "cblock-fifth", roomId: "staff_room_5" },
+//   { name: "LH-504 (C Block)", floor: "cblock-fifth", roomId: "lh504" },
+//   { name: "LH-503 (C Block)", floor: "cblock-fifth", roomId: "lh503" },
+//   { name: "LH-502 (C Block)", floor: "cblock-fifth", roomId: "lh502" },
+//   { name: "LH-501 (C Block)", floor: "cblock-fifth", roomId: "lh501" },
+//   { name: "DEPT LIBRARY (C Block Fifth)", floor: "cblock-fifth", roomId: "dept_library_5" },
+//   { name: "Washroom (C Block Fifth)", floor: "cblock-fifth", roomId: "washroom_5" },
+//   { name: "Stairs (C Block 5th L-Side)", floor: "cblock-fifth", roomId: "stair13" },
+//   { name: "Stairs (C Block 5th R-Side)", floor: "cblock-fifth", roomId: "stair14" },
+//   { name: "Stairs (C Block 5th center)", floor: "cblock-fifth", roomId: "stair15" },
+//   // CANTEEN ROOMS
 
-  // Second Floor
-  { name: "Chikkin", floor: "canteen-second", roomId: "chikkkin" },
-  { name: "Student Seating Area", floor: "canteen-second", roomId: "studentseating" },
-  { name: "Stairs 4", floor: "canteen-second", roomId: "stair4" },
+//   // Ground Floor
+//   { name: "CAFE CORNER", floor: "canteen-ground", roomId: "cafe_corner" },
+//   { name: "Stationary", floor: "canteen-ground", roomId: "xerox" },
+//   { name: "Washroom", floor: "canteen-ground", roomId: "washroom" },
+//   { name: "PE Staffroom", floor: "canteen-ground", roomId: "pestaffroom" },
+//   { name: "TT Court", floor: "canteen-ground", roomId: "ttcourt" },
+//   { name: "GYM", floor: "canteen-ground", roomId: "gym" },
+//   { name: "Stairs 1", floor: "canteen-ground", roomId: "stairs1" },
+//   { name: "Stairs 2", floor: "canteen-ground", roomId: "stairs2" },
 
-];
+//   // First Floor
+//   { name: "Canteen", floor: "canteen-first", roomId: "canteen" },
+//   { name: "Student Seating Area", floor: "canteen-first", roomId: "studentseating" },
+//   { name: "Staff Seating Area", floor: "canteen-first", roomId: "staffseating" },
+//   { name: "Stairs 3", floor: "canteen-first", roomId: "stair3" },
+
+//   // Second Floor
+//   { name: "Chikkin", floor: "canteen-second", roomId: "chikkkin" },
+//   { name: "Student Seating Area", floor: "canteen-second", roomId: "studentseating" },
+//   { name: "Stairs 4", floor: "canteen-second", roomId: "stair4" },
+
+// ];
 
 function App() {
   const [location, setLocation] = useState(null);
@@ -1409,13 +1457,8 @@ function App() {
     const all = [
       ...campusLocations,
       ...buildings.map((b) => ({ ...b })),
-      ...allSearchableRooms.map((room) => ({
-        id: room.roomId,
-        name: room.name,
-        type: "indoor-room",
-        floor: room.floor,
-        block: room.block,
-      })),
+
+
     ];
     setFilteredResults(
       all.filter((item) =>
@@ -2679,7 +2722,7 @@ function App() {
               style={{
                 position: "absolute",        // ✅ anchors button inside the map box
                 bottom: "15px",              // ✅ places it near the bottom
-                left: "50%",
+                left: "55%",
                 transform: "translateX(-50%)",
                 padding: "10px 20px",
                 background: "#1976d2",
