@@ -620,15 +620,15 @@ const destinationIcon = new L.Icon({
 });
 //A Block room data
 const aBlockEntrance = { x: 400, y: 300 };
-const aBlockEntranceCoords = [400,285]; // Assuming a corner entrance for layout
+const aBlockEntranceCoords = [400, 285]; // Assuming a corner entrance for layout
 const aBlockGroundRooms = [
-  { id: "room", name: "Room", x: 140, y: 40, w: 150, h: 60, path: [aBlockEntranceCoords ,[400, 250], [305, 250], [305, 70], [295, 70]] },
-  { id: "seminarhall1", name: "Seminar Hall", x: 140, y: 200, w: 70, h: 90, path: [aBlockEntranceCoords ,[400, 250], [215, 250]] },
-  { id: "room2", name: "Room", x: 420, y: 60, w: 140, h: 120, path: [aBlockEntranceCoords ,[400, 100], [415, 100]] },
-  { id: "placement", name: "Placement room", x: 140, y: 120, w: 150, h: 70, path: [aBlockEntranceCoords ,[400, 250], [305, 250], [305, 170], [295, 170]] },
+  { id: "room", name: "Room", x: 140, y: 40, w: 150, h: 60, path: [aBlockEntranceCoords, [400, 250], [305, 250], [305, 70], [295, 70]] },
+  { id: "seminarhall1", name: "Seminar Hall", x: 140, y: 200, w: 70, h: 90, path: [aBlockEntranceCoords, [400, 250], [215, 250]] },
+  { id: "room2", name: "Room", x: 420, y: 60, w: 140, h: 120, path: [aBlockEntranceCoords, [400, 100], [415, 100]] },
+  { id: "placement", name: "Placement room", x: 140, y: 120, w: 150, h: 70, path: [aBlockEntranceCoords, [400, 250], [305, 250], [305, 170], [295, 170]] },
   { id: "a_g_stairs", name: "Stairs", x: 320, y: 50, w: 60, h: 120, path: [[350, 180]] },
-  { id: "seminarhall2", name: "Seminar Hall", x: 140, y: 300, w: 70, h: 90, path: [aBlockEntranceCoords ,[400, 250], [230, 250],[230,350],[215,350]] },
-  { id: "lh002", name: "LH 002", x: 240, y: 300, w: 70, h: 90, path: [aBlockEntranceCoords ,[400, 250], [230, 250],[230,350],[235,350]] },
+  { id: "seminarhall2", name: "Seminar Hall", x: 140, y: 300, w: 70, h: 90, path: [aBlockEntranceCoords, [400, 250], [230, 250], [230, 350], [215, 350]] },
+  { id: "lh002", name: "LH 002", x: 240, y: 300, w: 70, h: 90, path: [aBlockEntranceCoords, [400, 250], [230, 250], [230, 350], [235, 350]] },
 ];
 
 
@@ -708,7 +708,7 @@ const aBlockFourthRooms = [
 
 const aBlockFifthRooms = [
   { id: "a_s_stairs", name: "Stairs", x: 560, y: 250, w: 60, h: 90, path: [STAIR_ANCHOR] },
-  { id: "empty area", name: "Empty Area", x: 100, y: 40, w: 450, h: 300, path: [[170, 280], [170, 320], [210, 320]] },
+  { id: "empty area", name: "Empty Area", x: 100, y: 40, w: 450, h: 300, path: [STAIR_ANCHOR] },
 ];
 
 
